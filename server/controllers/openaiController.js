@@ -1,7 +1,7 @@
 const {openai} = require('../models/openaiModel.js');
 const openaiController = {};
 
-openaiController.aiTest = async () => {
+openaiController.aiTest = async (req, res, next) => {
 
     const prompt = `
         Please give me a list of 5 fruits that grow in the state of Oregon. Return response in the following parsable JSON format:
@@ -18,6 +18,10 @@ openaiController.aiTest = async () => {
     })
 
     console.log(response.data.choices[0].text);
+
+    res.response = response;
+
+    return next();
 }
 
 module.exports = openaiController;
