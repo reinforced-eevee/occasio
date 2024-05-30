@@ -8,4 +8,4 @@ const config = new Configuration({
 
 const openai = new OpenAIApi(config);
 
-module.exports = {openai}
+module.exports = openai;
