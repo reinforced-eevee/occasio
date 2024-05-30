@@ -3,6 +3,8 @@ const router = express.Router();
 
 const {aiTest} = require('../controllers/openaiController');
 
-router.get('/openaiTest', aiTest, (req, res) => {
-
+router.get('/aiTest', aiTest, (req, res) => {
+    return res.json({response: response});
 })
+
+module.exports = router;
