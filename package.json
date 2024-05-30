@@ -1,0 +1,25 @@
+{
+  "name": "occasio",
+  "version": "1.0.0",
+  "description": "event planning app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reinforced-eevee/occasio.git"
+  },
+  "author": "@emi-kh @trangyz @wantinglee90 @pavelkrapivin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reinforced-eevee/occasio/issues"
+  },
+  "homepage": "https://github.com/reinforced-eevee/occasio#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router": "^6.23.1"
+  }
+}
