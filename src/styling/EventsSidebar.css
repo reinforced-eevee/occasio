@@ -1,0 +1,42 @@
+.events-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 200px;
+  height: 300px;
+  background-color: #f9f9f9;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.event-icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  font-size: 48px;
+}
+
+.event-details {
+  text-align: center;
+  margin-top: 20px;
+}
+.events-sidebar {
+  flex: 0 0 200px;
+}
