@@ -20,7 +20,7 @@ openaiController.aiTest = async (req, res, next) => {
         })
 
         console.log('Response from openai: ', response.data.choices[0].text);
-        res.response = response;
+        // res.response = response;
         return next();
 
     } catch (error) {
