@@ -5,7 +5,7 @@ const {aiTest} = require('../controllers/openaiController');
 
 router.get('/aiTest', aiTest, (req, res) => {
     // return res.json({response: response});
-    return res.status(200).send('Ok');
+    return res.status(200).send(res.response);
 })
 
 router.get('/newTest', (req, res) => {
