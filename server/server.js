@@ -15,9 +15,18 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
+const openaiRoutes = require('./routes/openaiRoutes.js');
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
+
+// app.get('/serverTest', (req, res) => {
+//   res.json({response: 'Hey buddy, I exist =)'})
+// });
+
+app.use('/openai', openaiRoutes);
+app.use('/events', eventRouter);
 
 app.get('/action/getUser', userController.getUser, (req, res) => {
   res.json(res.locals.user);
@@ -62,10 +71,24 @@ app.get('/action/logout', sessionController.endSession, (req, res) => {
 
 app.use('/events', eventRouter);
 
+// Global Error Handler
 app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).send({ error: err });
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+
+  const errObj = Object.assign(defaultErr, err);
+  console.log(errObj.log)
+  // res.status(errObj.status).res.json(errObj.message);
+  // res.json(errObj.message);
 });
+
+// app.use((err, req, res, next) => {
+//   console.error(err);
+//   res.status(500).send({ error: err });
+// });
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}...`);
