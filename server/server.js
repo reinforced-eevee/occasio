@@ -6,6 +6,8 @@ const userController = require('./controllers/userController.js');
 const cookieController = require('./controllers/cookieController.js');
 const sessionController = require('./controllers/sessionController.js');
 
+const eventRouter = require('./routes/eventRouter.js');
+
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
@@ -79,6 +81,8 @@ app.get(
     // res.json(errObj.message);
   });
 
+
+  app.use('/events', eventRouter);
 
   app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`);
