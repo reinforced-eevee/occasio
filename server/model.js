@@ -25,7 +25,8 @@ const eventSchema = new Schema({
     name: { type: String, required: true},
     date: {type: Date},
     type: {type: String},
-    audience: {type: String},
+    size: {type: Number},
+    ageRange: {type: String},
     location: {type: String},
     theme: {type: String},
     venues: [{
