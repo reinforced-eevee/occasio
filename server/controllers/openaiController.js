@@ -50,11 +50,11 @@ openaiController.aiItinerary = async (req, res, next) => {
     }
 }
 
-openaiController.aiVenue = async (req, res, next) => {
+openaiController.aiVenues = async (req, res, next) => {
     const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const venuePrompt = `
-        Please give me a list of potential venues for an event I am planning, using the following information, if provided.
+        Please give me a list of potential venues that actually exist, for an event I am planning, using the following information, if provided.
         name: ${name},
         date: ${date},
         type: ${type},
@@ -95,9 +95,12 @@ openaiController.aiVenue = async (req, res, next) => {
             message: {err: error}
         }
         return next(errObj);
-    }
-    
+    } 
 }
+
+// openaiController.aiShopList = async (req, res, next) => {
+    
+// }
 
 openaiController.aiTest = async (req, res, next) => {
     const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
