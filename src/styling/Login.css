@@ -1,0 +1,69 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --backgroundColor: #f1f5f9;
+  --headingColor: #fffffe;
+  --btnColor: #ff8906;
+  --black: black;
+  --white: #fffffe;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --max-width: 1170px;
+  --box-shadow: box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --font-family: "Roboto", sans-serif;
+  --font-weight: 80;
+  --font-style: normal;
+}
+.page-container {
+  height: 100vh;
+  background: var(--backgroundColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-center {
+  text-align: center;
+  font-size: 1.5rem;
+  width: 27rem;
+  height: 35rem;
+  background: var(--headingColor);
+  padding: 5rem 4rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--black);
+}
+.login-center h2{
+  margin-bottom: 3rem;
+}
+.login-center input {
+  padding: 0.25rem 0.75rem;
+}
+.login-btn {
+  margin: 1.5rem 0;
+}
+.login-btn:hover {
+  background: var(--btnColor);
+  color: var(--black);
+}
+.login-form p,
+.login-center p {
+  font-size: 1.2rem;
+  margin-bottom: 0px;
+}
+.signup-footer {
+  margin-top: 2rem;
+}
+.login-center a {
+  color: var(--black);
+}
+.login-footer a {
+  color: var(--black);
+}
+.login-center a:hover {
+  color: var(--btnColor);
+}
