@@ -200,6 +200,10 @@ openaiController.aiPlaylist = async (req, res, next) => {
     } 
 }
 
+
+
+
+// Route for testing AI connection
 openaiController.aiTest = async (req, res, next) => {
     const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
