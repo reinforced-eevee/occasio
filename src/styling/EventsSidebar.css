@@ -40,3 +40,13 @@
 .events-sidebar {
   flex: 0 0 200px;
 }
+.events-list {
+  overflow-y: auto;
+  max-height: 220px; /* Adjusted to fit within the sidebar height */
+  width: 100%;
+  padding: 5px;
+}
+
+.event-icon-box {
+  flex: 0 0 auto; /* Ensure that boxes do not shrink */
+}

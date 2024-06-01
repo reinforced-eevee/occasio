@@ -7,7 +7,7 @@ function Home() {
   return (
     <div>
       <HomeNavbar />
-      <Questionaire />
+
       <EventsSidebar />
     </div>
   );
