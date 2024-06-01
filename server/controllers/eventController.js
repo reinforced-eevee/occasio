@@ -1,4 +1,4 @@
-const { User, Event } = require('../model.js');
+const { User, Event } = require('../models/model.js');
 
 const eventController = {};
 
