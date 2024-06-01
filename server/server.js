@@ -20,11 +20,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../src', 'index.html'));
 });
 
-app.get('/serverTest', (req, res) => {
-  res.json({response: 'Hey buddy, I exist =)'})
-});
+// app.get('/serverTest', (req, res) => {
+//   res.json({response: 'Hey buddy, I exist =)'})
+// });
 
 app.use('/openai', openaiRoutes);
+app.use('/events', eventRouter);
 
 app.get('/action/getUser', userController.getUser, (req, res) => {
     res.json(res.locals.user);
@@ -68,6 +69,7 @@ app.get(
     res.redirect('/');
   });
 
+  // Global Error Handler
   app.use((err, req, res, next) => {
     const defaultErr = {
       log: 'Express error handler caught unknown middleware error',
@@ -80,9 +82,6 @@ app.get(
     // res.status(errObj.status).res.json(errObj.message);
     // res.json(errObj.message);
   });
-
-
-  app.use('/events', eventRouter);
 
   app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`);
