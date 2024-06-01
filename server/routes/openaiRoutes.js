@@ -15,9 +15,9 @@ router.get('/aiVenues', aiVenues, (req, res) => {
     return res.status(200).send(res.venueResponse);
 })
 
-// router.get('aiShoppingList', aiShopList, (req, res) => {
-//     return res.status(200).send(res.shopResponse);
-// })
+router.get('aiShoppingList', aiShopList, (req, res) => {
+    return res.status(200).send(res.shopResponse);
+})
 
 // router.get('aiPlaylist', aiPlaylist, (req, res) => {
 //     return res.status(200).send(res.shopResponse);
