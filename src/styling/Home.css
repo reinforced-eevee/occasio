@@ -1,0 +1,49 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.home-container > * {
+  margin: 10px;
+}
+.create-event-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.create-event-input {
+  margin-top: 20px;
+  width: 80%;
+}
+
+.sidebar-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+}
+.inline-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centering items horizontally */
+  width: 100%;
+}
+
+.inline-input-container input {
+  flex-grow: 1;
+  margin-right: 20px; /* Space between input field and button */
+  max-width: 500px; /* Limiting the maximum width */
+}
+
+.inline-input-container button {
+  flex-shrink: 0;
+}

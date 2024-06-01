@@ -1,0 +1,47 @@
+.page-container {
+  height: 100vh;
+  background: var(--backgroundColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-center {
+  text-align: center;
+  font-size: 1.5rem;
+  width: 27rem;
+  height: 35rem;
+  background: var(--headingColor);
+  padding: 5rem 4rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--black);
+}
+.login-center h2 {
+  margin-bottom: 3rem;
+}
+.login-center input {
+  padding: 0.25rem 0.75rem;
+}
+.login-btn {
+  margin: 1.5rem 0;
+}
+.login-btn:hover {
+  background: var(--btnColor);
+  color: var(--black);
+}
+.login-form p,
+.login-center p {
+  font-size: 1.2rem;
+  margin-bottom: 0px;
+}
+.signup-footer {
+  margin-top: 2rem;
+}
+.login-center a {
+  color: var(--black);
+}
+.login-footer a {
+  color: var(--black);
+}
+.login-center a:hover {
+  color: var(--btnColor);
+}
