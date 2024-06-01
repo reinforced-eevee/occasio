@@ -45,9 +45,12 @@ eventController.addEvent = async (req, res, next) => {
         name,
         date,
         type,
-        audience,
+        guest_size,
+        age_range,
         location,
         theme,
+        formality,
+        budget,
         venues,
         activities,
         playlist,
@@ -56,7 +59,7 @@ eventController.addEvent = async (req, res, next) => {
 
     try {
         // update fields
-        const event = await Event.create({ name, date, type, audience, location, theme, venues, activities, playlist, shoppingList});
+        const event = await Event.create({ name, date, type, guest_size, age_range, location, theme, formality, budget, venues, activities, playlist, shoppingList});
         const user = await User.findOne({ _id: userID});
 
         if (!user.events) user.events = []

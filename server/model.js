@@ -24,11 +24,13 @@ const User = mongoose.model('User', userSchema);
 const eventSchema = new Schema({
     name: { type: String, required: true},
     date: {type: Date},
-    type: {type: String},
-    size: {type: Number},
-    ageRange: {type: String},
+    type: {type: String, required: true},
+    guest_size: {type: Number, required: true},
+    age_range: {type: String},
+    formality: {type: String},
     location: {type: String},
     theme: {type: String},
+    budget: {type: Number},
     venues: [{
         name: {type: String},
         address: {type: String},
