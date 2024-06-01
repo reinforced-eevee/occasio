@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.NODE_ENV === 'test' ? process.env.TEST_MONGO_URI : process.env.MONGO_URI;
 
 mongoose
   .connect(MONGO_URI, {
@@ -14,7 +14,7 @@ mongoose
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     events: [{}]
   });
@@ -30,7 +30,7 @@ const eventSchema = new Schema({
     formality: {type: String},
     location: {type: String},
     theme: {type: String},
-    budget: {type: Number},
+    budget: {type: String},
     venues: [{
         name: {type: String},
         address: {type: String},

@@ -11,7 +11,7 @@ router.get('/:eventID', eventController.getEvent, (req, res, next) => {
     return res.status(200).json(res.locals.event)
 })
 
-router.post('/:eventID', eventController.addEvent, (req, res, next) => {
+router.post('/', eventController.addEvent, (req, res, next) => {
     return res.status(200).json(res.locals.eventID)
 })
 

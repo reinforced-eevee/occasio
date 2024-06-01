@@ -4,17 +4,18 @@ const eventController = {};
 
 // controller to get all events tagged to user
 eventController.getEvents = async (req, res, next) => {
-    const userID = req.cookies.ssid;
-
+    console.log("event controller get events running")
     try {
+        const userID = req.cookies.ssid;
         const user = await User.findOne({ _id: userID});
-        res.locals.events = user.events;
+        res.locals.events = user ? user.events : [];
+        console.log(res.locals.events);
         return next();
     } catch (error) {
         return next({
             log: 'Error in eventController.getEvents',
             status: 400,
-            message: {err: 'Error getting events'}
+            message: {err: 'Error getting events' + error.message}
         })
     }
 }
@@ -22,7 +23,6 @@ eventController.getEvents = async (req, res, next) => {
 // controller to get info for a single event
 eventController.getEvent = async (req, res, next) => {
     const eventID = req.params.eventID;
-
     try {
         const event = await Event.findOne({ _id: eventID});
         res.locals.event = event;
@@ -39,7 +39,6 @@ eventController.getEvent = async (req, res, next) => {
 // controller to post info after getting api data
 eventController.addEvent = async (req, res, next) => {
     const userID = req.cookies.ssid;
-    const eventID = req.params.eventID;
     // update fields
     const {
         name,
@@ -50,27 +49,22 @@ eventController.addEvent = async (req, res, next) => {
         location,
         theme,
         formality,
-        budget,
-        venues,
-        activities,
-        playlist,
-        shoppingList
+        budget
       } = req.body;
-
     try {
         // update fields
-        const event = await Event.create({ name, date, type, guest_size, age_range, location, theme, formality, budget, venues, activities, playlist, shoppingList});
+        const event = await Event.create({ name, date, type, guest_size, age_range, location, theme, formality, budget});
         const user = await User.findOne({ _id: userID});
-
         if (!user.events) user.events = []
         user.events.push(event);
+        await user.save();
         res.locals.eventID = event._id;
         return next();
     } catch (error) {
         return next({
             log: 'Error in eventController.addEvent',
             status: 400,
-            message: {err: 'Error adding event information'}
+            message: {err: 'Error adding event information: ' + error.message}
         })
     }
 }
