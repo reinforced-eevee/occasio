@@ -13,8 +13,8 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yaml
-    command: "--config.file=/etc/prometheus/prometheus.yaml"
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command: "--config.file=/etc/prometheus/prometheus.yml"
   occasio:
     build: .
     image: occasio-service
