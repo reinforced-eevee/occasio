@@ -87,7 +87,7 @@ app.get(
     };
 
     // TUBA error metrics and parsing
-    tubaMetricRouter(err, "the name of your service");
+    tubaMetricRouter(err, "occasio-service");
 
     const errObj = Object.assign(defaultErr, err);
     console.log(errObj.log)
