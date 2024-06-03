@@ -8,7 +8,7 @@ services:
       MONGO_PASSWORD: occaisioPWD123
   occasio:
     build: .
-    image: occasio-image
+    image: occasio-service
     ports:
       - '3000:3000'
     env_file:

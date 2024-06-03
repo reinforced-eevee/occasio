@@ -3,6 +3,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const { tubaMetricRouter } = require('tuba-tracing');
+const promClient = require('prom-client');
 
 const userController = require('./controllers/userController.js');
 const cookieController = require('./controllers/cookieController.js');
@@ -70,6 +71,12 @@ app.get(
     res.clearCookie('ssid');
     res.redirect('/');
   });
+
+  // Expose metrics endpoint for Prometheus to scrape
+  app.get('/metrics', async (req, res) => {
+    res.set('Content-Type', promClient.register.contentType);
+    res.send( await promClient.register.metrics());
+  }); 
 
   // Global Error Handler
   app.use((err, req, res, next) => {
