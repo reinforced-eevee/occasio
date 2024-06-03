@@ -6,10 +6,28 @@ services:
       MONGO_DB: occaisioDB123
       MONGO_USER: occaisioUSR123
       MONGO_PASSWORD: occaisioPWD123
+  prometheus:
+    image: prom/prometheus
+    networks:
+      - localprom
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yaml
+    command: "--config.file=/etc/prometheus/prometheus.yaml"
   occasio:
     build: .
     image: occasio-service
+    networks:
+      - localprom
     ports:
       - '3000:3000'
     env_file:
       - .env
+    depends_on:
+      - db
+volumes:
+  database:
+networks:
+  localprom:
+    driver: bridge
