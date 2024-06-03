@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db:
+    image: mongo
+    environment:
+      MONGO_DB: occaisioDB123
+      MONGO_USER: occaisioUSR123
+      MONGO_PASSWORD: occaisioPWD123
+  occasio:
+    build: .
+    image: occasio-image
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env

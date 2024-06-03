@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
+const { tubaMetricRouter } = require('tuba-tracing');
+
 const userController = require('./controllers/userController.js');
 const cookieController = require('./controllers/cookieController.js');
 const sessionController = require('./controllers/sessionController.js');
@@ -76,6 +78,9 @@ app.get(
       status: 500,
       message: { err: 'An error occurred' },
     };
+
+    // TUBA error metrics and parsing
+    tubaMetricRouter(err, "the name of your service");
 
     const errObj = Object.assign(defaultErr, err);
     console.log(errObj.log)
