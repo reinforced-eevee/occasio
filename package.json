@@ -6,7 +6,8 @@
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",
     "dev": "cross-env NODE_ENV=development concurrently \"webpack serve --open\" \"nodemon server/server.js\"",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "file-loader": "^6.2.0",
+    "fs": "^0.0.1-security",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.4",
     "openai": "^4.47.2",
@@ -35,7 +37,8 @@
     "react-redux": "^9.0.4",
     "react-router": "^6.21.1",
     "react-router-dom": "^6.23.1",
-    "redux": "^5.0.1"
+    "redux": "^5.0.1",
+    "supertest": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
