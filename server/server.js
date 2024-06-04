@@ -80,7 +80,7 @@ app.use((err, req, res, next) => {
   };
 
   const errObj = Object.assign(defaultErr, err);
-  console.log(errObj.log)
+  console.log(errObj.log);
   // res.status(errObj.status).res.json(errObj.message);
   // res.json(errObj.message);
 });
