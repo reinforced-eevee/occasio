@@ -26,6 +26,9 @@
     ],
     "transform": {
       "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
     }
   },
   "dependencies": {
@@ -62,6 +65,7 @@
     "css-loader": "^6.9.0",
     "eslint": "^8.56.0",
     "html-webpack-plugin": "^5.6.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "nodemon": "^3.0.2",
     "sass-loader": "^13.3.3",

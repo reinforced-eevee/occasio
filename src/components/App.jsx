@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router';
-import Signup from './Signup';
-import Login from './Login';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Login from './Login.jsx';
+import Signup from './Signup.jsx';
+import Home from './Home';
+import Questionaire from './Questionaire';
 
-const App = () => (
-  <div id="app">
-    <Routes>
-      <Route path="/" />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-    </Routes>
-  </div>
-);
+function App() {
+  return (
+    <div>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/questionaire' element={<Questionaire />} />
+      </Routes>
+    </div>
+  );
+}
 
 export default App;
