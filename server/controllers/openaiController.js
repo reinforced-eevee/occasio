@@ -84,9 +84,10 @@ openaiController.aiVenues = async (req, res, next) => {
             // max_tokens: 100,
             // temperature: 0.3
         })
-        console.log('Venue response successful')
+        console.log('Raw venue response:', venueResponse.choices[0].message.content);
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(venueResponse.choices[0].message.content))
         res.venueResponse = JSON.parse(venueResponse.choices[0].message.content);
+        console.log('Venue response successful')
         return next();
 
     } catch(error) {
