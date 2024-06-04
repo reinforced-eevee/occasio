@@ -36,14 +36,14 @@ openaiController.aiItinerary = async (req, res, next) => {
             // max_tokens: 100,
             // temperature: 0.3
         })
-        
+        console.log('Itinerary response successful')
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(itinResponse.choices[0].message.content))
         res.itinResponse = JSON.parse(itinResponse.choices[0].message.content);
         return next();
 
     } catch(error) {
         const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
+            log: `Error found in openaiController.aiItinerary, openai prompt query, ${error.message}`,
             message: {err: error}
         }
         return next(errObj);
@@ -84,14 +84,14 @@ openaiController.aiVenues = async (req, res, next) => {
             // max_tokens: 100,
             // temperature: 0.3
         })
-
+        console.log('Venue response successful')
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(venueResponse.choices[0].message.content))
-        res.openai.venueResponse = JSON.parse(venueResponse.choices[0].message.content);
+        res.venueResponse = JSON.parse(venueResponse.choices[0].message.content);
         return next();
 
     } catch(error) {
         const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
+            log: `Error found in openaiController.aiVenue, openai prompt query, ${error.message}`,
             message: {err: error}
         }
         return next(errObj);
@@ -135,14 +135,14 @@ openaiController.aiShopList = async (req, res, next) => {
             // max_tokens: 100,
             // temperature: 0.3
         })
-
+        console.log('Shopping List response successful')
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(shopResponse.choices[0].message.content))
         res.shopResponse = JSON.parse(shopResponse.choices[0].message.content);
         return next();
 
     } catch(error) {
         const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
+            log: `Error found in openaiController.aiShopList, openai prompt query, ${error.message}`,
             message: {err: error}
         }
         return next(errObj);
@@ -186,14 +186,14 @@ openaiController.aiPlaylist = async (req, res, next) => {
             // max_tokens: 100,
             // temperature: 0.3
         })
-
+        console.log('Playlist response successful')
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(plResponse.choices[0].message.content))
         res.plResponse = JSON.parse(plResponse.choices[0].message.content);
         return next();
 
     } catch(error) {
         const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
+            log: `Error found in openaiController.aiPlaylist, openai prompt query, ${error.message}`,
             message: {err: error}
         }
         return next(errObj);
@@ -204,9 +204,9 @@ openaiController.combineData = async (req, res, next) => {
 
     const fullEvent = {
         aiItinerary: res.itinResponse,
-        aiVenues: res.venueResponse
-        // aiShoppingList: res.shopResponse,
-        // aiPlaylist: res.plResponse
+        aiVenues: res.venueResponse,
+        aiShoppingList: res.shopResponse,
+        aiPlaylist: res.plResponse
     }
 
     res.fullEvent = fullEvent;
