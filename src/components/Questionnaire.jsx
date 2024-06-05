@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../styling/Questionaire.css';
+import '../styling/Questionnaire.css';
 
-const Questionaire = () => {
+const Questionnaire = () => {
   const [formData, setFormData] = useState({
     name: '',
     date: '',
@@ -110,4 +110,4 @@ const Questionaire = () => {
   );
 };
 
-export default Questionaire;
+export default Questionnaire;

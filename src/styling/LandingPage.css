@@ -1,0 +1,15 @@
+/* landing-page */
+
+/* Auto layout */
+.landing-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  background: #0A0220;
+}
+

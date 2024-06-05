@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeNavbar from './HomeNavbar';
-import Questionaire from './Questionaire';
+import Questionaire from './Questionnaire';
 import EventsSidebar from './EventsSidebar';
 import '../styling/Home.css';
 function Home() {
