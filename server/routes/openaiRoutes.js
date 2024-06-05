@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const {addEvent} = require('../controllers/eventController') 
 const {aiItinerary, aiVenues, aiShopList, aiPlaylist, combineData} = require('../controllers/openaiController');
 
 
@@ -9,7 +10,7 @@ router.post('/createEvent', aiItinerary, aiVenues, aiShopList, aiPlaylist, combi
     return res.status(200).send(res.fullEvent);
 })
 
-router.get('/aiItinerary', aiItinerary, (req, res) => {
+router.post('/aiItinerary', aiItinerary, addEvent, (req, res) => {
     return res.status(200).send(res.itinResponse);
 });
 

@@ -2,14 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-  margin: 20px;
+  margin: 20px auto; /* Centers the container horizontally */
   width: 80%;
   max-width: 600px;
+  position: relative; /* Needed for absolute positioning of the loader */
 }
 
 .questionaire-container form {
@@ -31,13 +32,11 @@
   color: white;
   border: none;
 }
-.questionaire-container {
+
+.loader-container {
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  width: 75%;
-}
-.questionaire-container {
-  width: 50%;
+  z-index: 1000; /* Ensures the loader is above other content */
 }
