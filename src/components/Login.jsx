@@ -145,7 +145,7 @@ const Login = () => {
             </button>
           </div>
         </form>
-        {!correctCredential && <div>Incorrect username or password.</div>}
+        {!correctCredential && <div className="error">Incorrect username or password.</div>}
 
         <p className='signup-footer'>
           Not a user yet? <a href='/signup'>Sign up here</a>
