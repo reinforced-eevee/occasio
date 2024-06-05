@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 const {addEvent} = require('../controllers/eventController') 
-const {aiTest, aiItinerary, aiVenues, aiShopList, aiPlaylist} = require('../controllers/openaiController');
+const {aiItinerary, aiVenues, aiShopList, aiPlaylist, combineData} = require('../controllers/openaiController');
 
-router.get('/aiTest', aiTest, (req, res) => {
-    return res.status(200).send(res.response);
+
+router.post('/createEvent', aiItinerary, aiVenues, aiShopList, aiPlaylist, combineData, (req, res) => {
+    console.log('Full openai response: ', res.fullEvent)
+    return res.status(200).send(res.fullEvent);
 })
 
 router.post('/aiItinerary', aiItinerary, addEvent, (req, res) => {
@@ -19,7 +21,7 @@ router.get('/aiVenues', aiVenues, (req, res) => {
 router.get('/aiShopList', aiShopList, (req, res) => {
     return res.status(200).send(res.shopResponse);
 })
-
+ 
 router.get('/aiPlaylist', aiPlaylist, (req, res) => {
     return res.status(200).send(res.plResponse);
 })

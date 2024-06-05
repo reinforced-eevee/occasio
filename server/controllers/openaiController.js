@@ -30,20 +30,20 @@ openaiController.aiItinerary = async (req, res, next) => {
     `
     try {
         const itinResponse = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo-0125",
-            messages: [{"role": "user", "content": itinerary}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
+            model: "gpt-4-turbo",
+            messages: [{"role": "user", "content": itinerary}],
+            response_format: { "type": "json_object" },
+            temperature: 0.4
         })
-        
-        console.log('Response from openAi, converted to JSON: ', JSON.parse(itinResponse.choices[0].message.content))
-        res.itinResponse = JSON.parse(itinResponse.choices[0].message.content);
+        // console.log('Response from openAi, converted to JSON: ', JSON.parse(itinResponse.choices[0].message.content))
+        const correctedJson = itinResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
+        res.itinResponse = JSON.parse(correctedJson);
+        console.log('Itinerary response successful')
         return next();
 
     } catch(error) {
         const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
+            log: `Error found in openaiController.aiItinerary, openai prompt query, ${error.message}`,
             message: {err: error}
         }
         return next(errObj);
@@ -66,7 +66,7 @@ openaiController.aiVenues = async (req, res, next) => {
         location: ${location}
     
         Please include a list of potential venues in close proximity to the location.
-        Response must be in the following parsable JSON format without formatted spacing or new line characters (\n), as we would save the response as an array of objects in our noSQL database: 
+        Response must be in the following parsable JSON format without formatted spacing or new line characters (\n), as we would save the response as an array of objects in our noSQL database. Response MUST be valid JSON format, thanks: 
         {
             "venues": [{
                 "name": "name",
@@ -78,20 +78,21 @@ openaiController.aiVenues = async (req, res, next) => {
 
     try {
         const venueResponse = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo-0125",
-            messages: [{"role": "user", "content": venuePrompt}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
+            model: "gpt-4-turbo",
+            messages: [{"role": "user", "content": venuePrompt}],
+            response_format: { "type": "json_object" },
+            temperature: 0.4
         })
-
-        console.log('Response from openAi, converted to JSON: ', JSON.parse(venueResponse.choices[0].message.content))
-        res.venueResponse = JSON.parse(venueResponse.choices[0].message.content);
+        console.log('Raw venue response:', venueResponse.choices[0].message.content);
+        // console.log('Response from openAi, converted to JSON: ', JSON.parse(venueResponse.choices[0].message.content))
+        const correctedJson = venueResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
+        res.venueResponse = JSON.parse(correctedJson);
+        console.log('Venue response successful')
         return next();
 
     } catch(error) {
         const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
+            log: `Error found in openaiController.aiVenue, openai prompt query, ${error.message}`,
             message: {err: error}
         }
         return next(errObj);
@@ -129,20 +130,21 @@ openaiController.aiShopList = async (req, res, next) => {
 
     try {
         const shopResponse = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo-0125",
-            messages: [{"role": "user", "content": shopPrompt}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
+            model: "gpt-4-turbo",
+            messages: [{"role": "user", "content": shopPrompt}],
+            response_format: { "type": "json_object" },
+            temperature: 0.4
         })
-
-        console.log('Response from openAi, converted to JSON: ', JSON.parse(shopResponse.choices[0].message.content))
-        res.shopResponse = JSON.parse(shopResponse.choices[0].message.content);
+        // console.log('Response from openAi, converted to JSON: ', JSON.parse(shopResponse.choices[0].message.content))
+        
+        const correctedJson = shopResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
+        res.shopResponse = JSON.parse(correctedJson);
+        console.log('Shopping List response successful')
         return next();
 
     } catch(error) {
         const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
+            log: `Error found in openaiController.aiShopList, openai prompt query, ${error.message}`,
             message: {err: error}
         }
         return next(errObj);
@@ -180,90 +182,38 @@ openaiController.aiPlaylist = async (req, res, next) => {
 
     try {
         const plResponse = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo-0125",
-            messages: [{"role": "user", "content": plPrompt}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
+            model: "gpt-4-turbo",
+            messages: [{"role": "user", "content": plPrompt}],
+            response_format: { "type": "json_object" },
+            temperature: 0.4
         })
+        // console.log('Response from openAi, converted to JSON: ', JSON.parse(plResponse.choices[0].message.content))
 
-        console.log('Response from openAi, converted to JSON: ', JSON.parse(plResponse.choices[0].message.content))
-        res.plResponse = JSON.parse(plResponse.choices[0].message.content);
+        const correctedJson = plResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
+        res.plResponse = JSON.parse(correctedJson);
+        console.log('Playlist response successful');
         return next();
 
     } catch(error) {
         const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
+            log: `Error found in openaiController.aiPlaylist, openai prompt query, ${error.message}`,
             message: {err: error}
         }
         return next(errObj);
     } 
 }
 
+openaiController.combineData = async (req, res, next) => {
 
-
-
-// Route for testing AI connection
-openaiController.aiTest = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
-
-    const itinerary = `
-    Please give me an itinerary for an event I am planning, using the following information, if provided.
-    name: ${name},
-    date: ${date},
-    type: ${type},
-    guest_size: ${guest_size},
-    age_range: ${age_range},
-    formality: ${formality},
-    theme: ${theme},
-    budget: ${budget},
-    location: ${location}
-    
-    Please include a schedule of events with activities, including potential venues in close proximity to the location, playlist to suit the theme and a shopping list for the event that fits the budget.
-    Response must be in the following parsable JSON format without formatted spacing or new line characters (\n), as we would save the response as an array of objects in our noSQL database: 
-    {
-        "name": "event name",
-        "date": "event date",
-        "activities": [{
-            "time_range": "time range of activity e.g. 9am - 10am",
-            "activity": "title/ name of activity"
-            "activity_details": "details/ description about activity"
-        }],
+    const fullEvent = {
+        aiItinerary: res.itinResponse,
+        aiVenues: res.venueResponse,
+        aiShoppingList: res.shopResponse,
+        aiPlaylist: res.plResponse
     }
-    `
 
-    const venuePrompt = `
-        Please give me a list of potential venues for a kids birthday party in Philadelphia, in the following parsable JSON format without formatted spacing or new line characters such as \n, as we would save the response as an array of objects in our noSQL database: 
-        {
-            "venues": [{
-                "name": "name",
-                "address": "address"
-            }]
-        }
-    `
-
-    try {
-
-        const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo-0125",
-            messages: [{"role": "user", "content": itinerary}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
-        })
-
-        // console.log('Response from openai: ', response.choices[0].message);
-        console.log('Convert to JSON, ', JSON.parse(response.choices[0].message.content))
-        res.response = JSON.parse(response.choices[0].message.content);
-        return next();
-
-    } catch (error) {
-        const errObj = {
-            log: `Error found in openaiController.aiTest, openai prompt query, ${error.message}`,
-            message: {err: error}
-        }
-        return next(errObj);
-    }
+    res.fullEvent = fullEvent;
+    next();
 }
 
 module.exports = openaiController;
