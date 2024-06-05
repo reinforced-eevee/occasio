@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styling/Questionaire.css';
+import { useNavigate } from 'react-router';
+import { Rings } from 'react-loader-spinner';
+import HomeNavbar from './HomeNavbar';
 
 const Questionaire = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     date: '',
@@ -13,6 +17,7 @@ const Questionaire = () => {
     formality: '',
     budget: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -21,14 +26,47 @@ const Questionaire = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true); // Set isSubmitting to true when form submission starts
     console.log('Form Data Submitted:', formData);
-    // Add logic for submitting form data to the database and redirecting to the dashboard
+    try {
+      const response = await fetch('http://localhost:3000/openai/aiItinerary', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        credentials: 'include' 
+      });
+      console.log(response)
+      if (!response.ok) {
+        throw new Error('Network response was not OK');
+      }
+      const result = await response.json();
+      console.log('Itinerary submitted:', result);
+      navigate('/home');
+    } catch (error) {
+      console.error('Failed to submit form:', error);
+    }
+    setIsSubmitting(false); // Set isSubmitting to false after form submission is complete
   };
 
   return (
+    <div>
+    <HomeNavbar />
     <div className='questionaire-container'>
+    {isSubmitting && (
+        <div className='loader-container'>
+          <Rings
+            visible={true}
+            height='150'
+            width='150'
+            color='#4fa94d'
+            ariaLabel='rings-loading'
+          />
+        </div>
+      )}
       <h2>Create new event</h2>
       <form onSubmit={handleSubmit}>
         <label>Name</label>
@@ -106,6 +144,7 @@ const Questionaire = () => {
 
         <button type='submit'>Submit</button>
       </form>
+    </div>
     </div>
   );
 };

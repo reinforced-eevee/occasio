@@ -4,12 +4,10 @@ const eventController = {};
 
 // controller to get all events tagged to user
 eventController.getEvents = async (req, res, next) => {
-    console.log("event controller get events running")
     try {
         const userID = req.cookies.ssid;
         const user = await User.findOne({ _id: userID});
         res.locals.events = user ? user.events : [];
-        console.log(res.locals.events);
         return next();
     } catch (error) {
         return next({
