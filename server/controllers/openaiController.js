@@ -31,14 +31,14 @@ openaiController.aiItinerary = async (req, res, next) => {
     try {
         const itinResponse = await openai.chat.completions.create({
             model: "gpt-4-turbo",
-            messages: [{"role": "user", "content": itinerary}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
+            messages: [{"role": "user", "content": itinerary}],
+            response_format: { "type": "json_object" },
+            temperature: 0.4
         })
-        console.log('Itinerary response successful')
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(itinResponse.choices[0].message.content))
-        res.itinResponse = JSON.parse(itinResponse.choices[0].message.content);
+        const correctedJson = itinResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
+        res.itinResponse = JSON.parse(correctedJson);
+        console.log('Itinerary response successful')
         return next();
 
     } catch(error) {
@@ -66,7 +66,7 @@ openaiController.aiVenues = async (req, res, next) => {
         location: ${location}
     
         Please include a list of potential venues in close proximity to the location.
-        Response must be in the following parsable JSON format without formatted spacing or new line characters (\n), as we would save the response as an array of objects in our noSQL database: 
+        Response must be in the following parsable JSON format without formatted spacing or new line characters (\n), as we would save the response as an array of objects in our noSQL database. Response MUST be valid JSON format, thanks: 
         {
             "venues": [{
                 "name": "name",
@@ -79,14 +79,14 @@ openaiController.aiVenues = async (req, res, next) => {
     try {
         const venueResponse = await openai.chat.completions.create({
             model: "gpt-4-turbo",
-            messages: [{"role": "user", "content": venuePrompt}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
+            messages: [{"role": "user", "content": venuePrompt}],
+            response_format: { "type": "json_object" },
+            temperature: 0.4
         })
         console.log('Raw venue response:', venueResponse.choices[0].message.content);
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(venueResponse.choices[0].message.content))
-        res.venueResponse = JSON.parse(venueResponse.choices[0].message.content);
+        const correctedJson = venueResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
+        res.venueResponse = JSON.parse(correctedJson);
         console.log('Venue response successful')
         return next();
 
@@ -131,14 +131,15 @@ openaiController.aiShopList = async (req, res, next) => {
     try {
         const shopResponse = await openai.chat.completions.create({
             model: "gpt-4-turbo",
-            messages: [{"role": "user", "content": shopPrompt}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
+            messages: [{"role": "user", "content": shopPrompt}],
+            response_format: { "type": "json_object" },
+            temperature: 0.4
         })
-        console.log('Shopping List response successful')
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(shopResponse.choices[0].message.content))
-        res.shopResponse = JSON.parse(shopResponse.choices[0].message.content);
+        
+        const correctedJson = shopResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
+        res.shopResponse = JSON.parse(correctedJson);
+        console.log('Shopping List response successful')
         return next();
 
     } catch(error) {
@@ -182,14 +183,15 @@ openaiController.aiPlaylist = async (req, res, next) => {
     try {
         const plResponse = await openai.chat.completions.create({
             model: "gpt-4-turbo",
-            messages: [{"role": "user", "content": plPrompt}]
-            // prompt: prompt,
-            // max_tokens: 100,
-            // temperature: 0.3
+            messages: [{"role": "user", "content": plPrompt}],
+            response_format: { "type": "json_object" },
+            temperature: 0.4
         })
-        console.log('Playlist response successful')
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(plResponse.choices[0].message.content))
-        res.plResponse = JSON.parse(plResponse.choices[0].message.content);
+
+        const correctedJson = plResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
+        res.plResponse = JSON.parse(correctedJson);
+        console.log('Playlist response successful');
         return next();
 
     } catch(error) {
