@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+const {addEvent} = require('../controllers/eventController') 
 const {aiTest, aiItinerary, aiVenues, aiShopList, aiPlaylist} = require('../controllers/openaiController');
 
 router.get('/aiTest', aiTest, (req, res) => {
     return res.status(200).send(res.response);
 })
 
-router.get('/aiItinerary', aiItinerary, (req, res) => {
+router.post('/aiItinerary', aiItinerary, addEvent, (req, res) => {
     return res.status(200).send(res.itinResponse);
 });
 
