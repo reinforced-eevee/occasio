@@ -42,6 +42,7 @@ eventController.addEvent = async (req, res, next) => {
     const {
         name,
         date,
+        days,
         type,
         guest_size,
         age_range,

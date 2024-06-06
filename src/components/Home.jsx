@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HomeNavbar from './HomeNavbar';
-import Questionaire from './Questionaire';
+import Questionnaire from './Questionnaire';
 import EventsSidebar from './EventsSidebar';
 import '../styling/Home.css';
 import Itinerary from './Itinerary';
