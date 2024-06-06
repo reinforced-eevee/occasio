@@ -17,10 +17,10 @@ export default function CurrEventDisplay({selectedEventID}) {
             </section>
             <section className='event-display'>
                 <Routes> 
-                    <Route path='/itinerary' element={} />
-                    <Route path='/venues' element={} />
-                    <Route path='/shoplist' element={} />
-                    <Route path='/playlist' element={} />
+                    <Route path='/itinerary' element={<Itinerary eventId={selectedEventID} />} />
+                    <Route path='/venues' element={<Venues eventId={selectedEventID} />} />
+                    <Route path='/shoplist' element={<ShoppingList eventId={selectedEventID} />} />
+                    <Route path='/playlist' element={<Playlist eventId={selectedEventID} />} />
                 </Routes>
             </section>
         </div>

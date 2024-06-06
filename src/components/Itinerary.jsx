@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Itinerary = ({ selectedEventID }) => {
-    const [eventDetails, setEventDetails] = useState('')
+    const [eventDetails, setEventDetails] = useState({});
 
     const getEvent = () => {
         fetch(`/events/${selectedEventID}`)
