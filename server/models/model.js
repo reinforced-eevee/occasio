@@ -24,6 +24,7 @@ const User = mongoose.model('User', userSchema);
 const eventSchema = new Schema({
     name: { type: String, required: true},
     date: {type: Date},
+    days: {type: Number}, 
     type: {type: String, required: true},
     guest_size: {type: Number, required: true},
     age_range: {type: String},

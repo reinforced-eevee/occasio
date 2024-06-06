@@ -2,12 +2,13 @@ const openai = require('../models/openaiModel.js');
 const openaiController = {};
 
 openaiController.aiItinerary = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
+    const {name, date, days, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const itinerary = `
         Please give me an itinerary for an event I am planning, using the following information, if provided.
         name: ${name},
         date: ${date},
+        days: ${days},
         type: ${type},
         guest_size: ${guest_size},
         age_range: ${age_range},
@@ -52,12 +53,13 @@ openaiController.aiItinerary = async (req, res, next) => {
 }
 
 openaiController.aiVenues = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
+    const {name, date, days, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const venuePrompt = `
         Please give me a list of potential venues that actually exist, for an event I am planning, using the following information, if provided.
         name: ${name},
         date: ${date},
+        days: ${days},
         type: ${type},
         guest_size: ${guest_size},
         age_range: ${age_range},
@@ -102,12 +104,13 @@ openaiController.aiVenues = async (req, res, next) => {
 }
 
 openaiController.aiShopList = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
+    const {name, date, days, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const shopPrompt = `
         Please generate a shopping list for me with prices and links to items, for an event I am planning, using the following information, if provided. 
         name: ${name},
         date: ${date},
+        days: ${days},
         type: ${type},
         guest_size: ${guest_size},
         age_range: ${age_range},
@@ -155,12 +158,13 @@ openaiController.aiShopList = async (req, res, next) => {
 }
 
 openaiController.aiPlaylist = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
+    const {name, date, days, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const plPrompt = `
         Please generate a playlist for an event I am planning, using the following information, if provided. 
         name: ${name},
         date: ${date},
+        days: ${days},
         type: ${type},
         guest_size: ${guest_size},
         age_range: ${age_range},
