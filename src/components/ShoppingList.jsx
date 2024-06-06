@@ -36,7 +36,7 @@ export default function ShoppingList({ selectedEventID }) {
             <div className='shoppinglist'>
                 {shopListDetails.shoppingList.map((item) => (
                     <div className='song-item'>
-                    <h3><a href={item.item_link} target='_blank' rel='noreferrer' className='shopList-titleLink'>{item.list_item}</a></h3>
+                    <h3><a href={item.item_link} target='_blank' rel='noopener noreferrer' className='shopList-titleLink'>{item.list_item}</a></h3>
                     <ul>
                         <li> Description:
                             <ul>
