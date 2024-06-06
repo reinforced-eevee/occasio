@@ -7,6 +7,7 @@ import {ShoppingList} from './ShoppingList.jsx';
 import {Playlist} from './Playlist.jsx';
 
 export default function CurrEventDisplay({selectedEventID}) {
+
     return (
         <div className='event-container'>
             <section className='event-nav'>
