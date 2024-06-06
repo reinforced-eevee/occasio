@@ -1,6 +1,7 @@
 const supertest = require('supertest');
 const app = require('../server/server.js');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const mockUserID = process.env.MOCK_USER_ID;
 
