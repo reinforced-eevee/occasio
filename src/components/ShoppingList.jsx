@@ -3,17 +3,6 @@ import React, { useState, useEffect } from 'react';
 export default function ShoppingList({ selectedEventID }) {
     const [shopListDetails, setShopListDetails] = useState({});
 
-    // "aiShoppingList": {
-    //     "event_name": "Roasted",
-    //     "event_date": "July 10th, 2024",
-    //     "shoppingList": [
-    //         {
-    //             "list_item": "Microphone and Stand",
-    //             "item_description": "Essential for performers to be heard during the open mic session.",
-    //             "estimated_cost": "$150",
-    //             "item_link": "https://www.amazon.com/s?k=microphone+and+stand"
-    //         },
-
     const getEvent = () => {
         fetch(`/events/${selectedEventID}`)
             .then((res) => res.json())

@@ -6,14 +6,6 @@ export default function Venues({ selectedEventID }) {
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
 
-    // "aiVenues": {
-    //     "venues": [
-    //         {
-    //             "name": "Curious Comedy Theater",
-    //             "address": "5225 NE Martin Luther King Jr Blvd, Portland, OR 97211",
-    //             "venue_description": "A dedicated comedy theater offering a stage for performances, ideal for an open mic comedy event."
-    //         },
-
     const getEvent = () => {
         fetch(`/events/${selectedEventID}`)
             .then((res) => res.json())

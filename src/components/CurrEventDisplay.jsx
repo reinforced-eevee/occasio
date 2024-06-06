@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes, Link} from 'react-router-dom';
 
-import {Itinerary} from './Itinerary.jsx';
-import {Venues} from './Venues.jsx';
-import {ShoppingList} from './ShoppingList.jsx';
-import {Playlist} from './Playlist.jsx';
+import Itinerary from './Itinerary.jsx';
+import Venues from './Venues.jsx';
+import ShoppingList from './ShoppingList.jsx';
+import Playlist from './Playlist.jsx';
 
 export default function CurrEventDisplay({selectedEventID}) {
 

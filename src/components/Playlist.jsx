@@ -3,22 +3,6 @@ import React, { useState, useEffect } from 'react';
 export default function Playlist({ selectedEventID }) {
     const [playlistDetails, setPlaylistDetails] = useState({});
 
-    // "aiPlaylist": {
-    //     "event_name": "Roasted",
-    //     "event_date": "July 10th, 2024",
-    //     "playlist_title": "Laughs & Beats",
-    //     "playlist": [
-    //         {
-    //             "song_title": "Smile",
-    //             "artist": "Uncle Kracker",
-    //             "genre": "Pop"
-    //         },
-    //         {
-    //             "song_title": "Funny",
-    //             "artist": "Tori Kelly",
-    //             "genre": "Pop"
-    //         },
-
     const getEvent = () => {
         fetch(`/events/${selectedEventID}`)
             .then((res) => res.json())

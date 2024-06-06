@@ -4,6 +4,7 @@ import Questionaire from './Questionaire';
 import EventsSidebar from './EventsSidebar';
 import '../styling/Home.css';
 import Itinerary from './Itinerary';
+import CurrEventDisplay from './CurrEventDisplay';
 
 function Home() {
   const [user, setUser] = useState('');
@@ -27,7 +28,7 @@ function Home() {
       <HomeNavbar />
       <div className="home-container">
         <EventsSidebar events={events} setSelectedEventID={setSelectedEventID} />
-        <Itinerary selectedEventID={selectedEventID} />
+        <CurrEventDisplay selectedEventID={selectedEventID} />
       </div>
     </div>
   );
