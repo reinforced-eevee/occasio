@@ -39,6 +39,7 @@ openaiController.aiItinerary = async (req, res, next) => {
         const correctedJson = itinResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
         res.locals.itinResponse = JSON.parse(correctedJson).activities;
         console.log('Itinerary response successful')
+        console.log(res.locals.itinResponse);
         return next();
 
     } catch(error) {
@@ -87,7 +88,8 @@ openaiController.aiVenues = async (req, res, next) => {
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(venueResponse.choices[0].message.content))
         const correctedJson = venueResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
         res.locals.venueResponse = JSON.parse(correctedJson).venues;
-        console.log('Venue response successful, values are :' + res.locals.venueResponse);
+        console.log('Venue response successful');
+        console.log(res.locals.venueResponse);
         return next();
 
     } catch(error) {
@@ -139,7 +141,8 @@ openaiController.aiShopList = async (req, res, next) => {
         
         const correctedJson = shopResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
         res.locals.shopResponse = JSON.parse(correctedJson).shoppingList;
-        console.log('Shopping List response successful, shopping list is: ' + res.locals.shopResponse)
+        console.log('Shopping List response successful')
+        console.log(res.locals.shopResponse)
         return next();
 
     } catch(error) {
@@ -192,6 +195,7 @@ openaiController.aiPlaylist = async (req, res, next) => {
         const correctedJson = plResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
         res.locals.plResponse = JSON.parse(correctedJson).playlist;
         console.log('Playlist response successful');
+        console.log(res.locals.plResponse);
         return next();
 
     } catch(error) {
@@ -211,7 +215,8 @@ openaiController.combineData = async (req, res, next) => {
         shoppingList: res.locals.shopResponse,
         playlist: res.locals.plResponse
     }
-    console.log('combine data is running, full event is ' + fullEvent.aiVenues);
+    console.log('combine data is running');
+    console.log(fullEvent);
 
     res.locals.fullEvent = fullEvent;
     next();
