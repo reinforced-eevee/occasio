@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
   --bg-color: #0A0220; 
   --secondary-color: #F1CFD3;
@@ -94,31 +99,11 @@
   flex-grow: 0;
 }
 
-button {
-  display: inline-flex;
-  /* flex-direction: row; */
-  justify-content: center;
-  align-items: center;
-  padding: 14px 36px;
-  gap: 10px;
-  max-width: 179px;
-  width: 100%;
-  max-height: 56px;
-  height: fixed;
-  background: var(--primary-color);
-  border-radius: 65px;
-  border-color: none;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-  z-index: 1;
-  text-align: center;
-  cursor: pointer;
-}
-
-button:hover {
-  background: var(--bg-color); 
-  color: white;
+.started-button:hover {
+  background: var(--secondary-color); 
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  animation-duration: 0ms;
 }
 
 .started-button {
@@ -134,6 +119,25 @@ button:hover {
   z-index: 1;
   /* width: 107px;
   height: 28px; */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 36px;
+  gap: 10px;
+  max-width: 179px;
+  width: 100%;
+  max-height: 56px;
+  height: fixed;
+  background: var(--primary-color);
+  border-radius: 65px;
+  border: none;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  z-index: 1;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .overlay-svg {
@@ -150,7 +154,11 @@ button:hover {
 
 .bottom {
   display: flex;
-  width: 198px;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: space-between; 
+  position: relative;
+  width: 100%;
   max-height: 46px;
   height: auto;
   gap: 0px;
@@ -162,8 +170,10 @@ button:hover {
   max-height: 46px;
   height: auto;
   gap: 0px;
-  justify: space-between;
+  justify-content: space-around;
   opacity: 0px;
+  display: flex;
+  align-items: center;
 }
 
 .logo-text {
@@ -186,6 +196,7 @@ button:hover {
 }
 
 .copyright {
+  position: absolute;
   margin: 0 auto;
   width: 246px;
   height: 14px;
@@ -199,5 +210,7 @@ button:hover {
   flex: none;
   order: 1;
   flex-grow: 0;
-  justify-content: middle;
+  justify-content: center; 
+  left: 50%; /* Move to the horizontal center */
+  transform: translateX(-50%); /* Adjust to align center */
 }
