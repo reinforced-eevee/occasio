@@ -69,7 +69,7 @@ const Questionaire = () => {
       )}
       <h2>Create new event</h2>
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
+        <label>Name*</label>
         <input
           type='text'
           name='name'
@@ -86,7 +86,7 @@ const Questionaire = () => {
           onChange={handleChange}
         />
 
-        <label>Type</label>
+        <label>Type*</label>
         <input
           type='text'
           name='type'
@@ -94,7 +94,7 @@ const Questionaire = () => {
           onChange={handleChange}
         />
 
-        <label>Number of guests</label>
+        <label>Number of guests*</label>
         <input
           type='number'
           name='guest_size'
@@ -104,7 +104,7 @@ const Questionaire = () => {
 
         <label>Age Range</label>
         <input
-          type='number'
+          type='string'
           name='age_range'
           value={formData.age_range}
           onChange={handleChange}

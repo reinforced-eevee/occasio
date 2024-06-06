@@ -31,24 +31,10 @@ const eventSchema = new Schema({
     location: {type: String},
     theme: {type: String},
     budget: {type: String},
-    venues: [{
-        name: {type: String},
-        address: {type: String},
-    }],
-    activities: [{
-        time: {type: Date},
-        description: {type: String},
-    }],
-    playlist: [{
-        title: {type: String},
-        artist: {type: String},
-        link: {type: String},
-    }],
-    shoppingList: [{
-        name: {type: String},
-        quantity: {type: Number},
-        totalCost: {type: Number},
-    }]
+    venues: [{}],
+    activities: [{}],
+    playlist: [{}],
+    shoppingList: [{}]
   });
   
 const Event = mongoose.model('Event', eventSchema);
