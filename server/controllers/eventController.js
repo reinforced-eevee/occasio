@@ -37,25 +37,46 @@ eventController.getEvent = async (req, res, next) => {
 // controller to post info after getting api data
 eventController.addEvent = async (req, res, next) => {
     const userID = req.cookies.ssid;
+    console.log('addEVent running, userID is ' + userID)
     // update fields
     const {
         name,
         date,
+        days,
         type,
         guest_size,
         age_range,
         location,
         theme,
         formality,
-        budget
+        budget,
+        // venues,
+        // activities,
+        // playlist,
+        // shoppingList
       } = req.body;
+
+      console.log('name is ' + name);
+      const {
+        venues,
+        activities,
+        playlist,
+        shoppingList
+      } = res.locals.fullEvent;
+
+      console.log('venues are ' + venues);
+
+    //   console.log(res.locals.fullEvent);
     try {
         // update fields
-        const event = await Event.create({ name, date, type, guest_size, age_range, location, theme, formality, budget});
+        const event = await Event.create({ name, date, type, guest_size, age_range, location, theme, formality, budget, venues, activities, playlist, shoppingList});
+        console.log('event created: ' + event.name);
         const user = await User.findOne({ _id: userID});
+        console.log('user found: ' + user.email)
         if (!user.events) user.events = []
         user.events.push(event);
         await user.save();
+        console.log('user saved');
         res.locals.eventID = event._id;
         return next();
     } catch (error) {

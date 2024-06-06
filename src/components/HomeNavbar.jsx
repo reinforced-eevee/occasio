@@ -4,9 +4,9 @@ import '../styling/HomeNavbar.css';
 function HomeNavbar(props) {
   return (
     <nav className='home-navbar'>
-      <h2>Some logo</h2>
-      <h2>Create Event</h2>
-      <h2>Logout</h2>
+      <h2><a href="/home">Some logo</a></h2>
+      <h2><a href="/questionnaire">Create Event</a></h2>
+      <h2><a href="/action/logout">Logout</a></h2>
     </nav>
   );
 }

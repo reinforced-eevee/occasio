@@ -1,15 +1,21 @@
+.questionnaire-background {
+  background-color: #444444;
+}
+
 .questionaire-container {
   display: flex;
+  color: white;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-  margin: 20px;
+  background-color: #8b8b8b;
+  margin: 20px auto; /* Centers the container horizontally */
   width: 80%;
   max-width: 600px;
+  position: relative; /* Needed for absolute positioning of the loader */
 }
 
 .questionaire-container form {
@@ -27,17 +33,20 @@
 
 .questionaire-container button {
   cursor: pointer;
-  background-color: #4caf50;
+  background-color: #CD4E07;
   color: white;
   border: none;
 }
-.questionaire-container {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 75%;
+
+.questionaire-container button:disabled {
+  background-color: #F1CFD3; 
+  cursor: not-allowed; 
 }
-.questionaire-container {
-  width: 50%;
+
+.loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensures the loader is above other content */
 }

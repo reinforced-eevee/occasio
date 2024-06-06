@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import '../styling/EventsSidebar.css'; // Assuming you will create a CSS file for styles
 
-function EventsSidebar() {
-  const [selectedEvent, setSelectedEvent] = useState(null);
+function EventsSidebar({events, setSelectedEventID}) {
+  // const [selectedEvent, setSelectedEvent] = useState(null);
 
   //mock data
-  const events = [
-    { id: 1, name: 'Event 1', details: 'Details of Event 1' },
-    { id: 2, name: 'Event 2', details: 'Details of Event 2' },
-    { id: 3, name: 'Event 3', details: 'Details of Event 3' },
-  ];
+  // const events = [
+  //   { id: 1, name: 'Event 1', details: 'Details of Event 1' },
+  //   { id: 2, name: 'Event 2', details: 'Details of Event 2' },
+  //   { id: 3, name: 'Event 3', details: 'Details of Event 3' },
+  // ];
 
-  const handleEventClick = (event) => {
-    setSelectedEvent(event);
-  };
+  // const handleEventClick = (event) => {
+  //   setSelectedEvent(event);
+  // };
 
   return (
     <div className='events-sidebar'>
@@ -23,7 +23,9 @@ function EventsSidebar() {
           <div
             key={event.id}
             className='event-icon-box'
-            onClick={() => handleEventClick(event)}
+            onClick={() => {
+              setSelectedEventID(event._id);
+            }}
           >
             {event.icon} {event.name}
           </div>

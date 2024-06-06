@@ -2,12 +2,13 @@ const openai = require('../models/openaiModel.js');
 const openaiController = {};
 
 openaiController.aiItinerary = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
+    const {name, date, days, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const itinerary = `
         Please give me an itinerary for an event I am planning, using the following information, if provided.
         name: ${name},
         date: ${date},
+        days: ${days},
         type: ${type},
         guest_size: ${guest_size},
         age_range: ${age_range},
@@ -37,8 +38,9 @@ openaiController.aiItinerary = async (req, res, next) => {
         })
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(itinResponse.choices[0].message.content))
         const correctedJson = itinResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
-        res.itinResponse = JSON.parse(correctedJson);
+        res.locals.itinResponse = JSON.parse(correctedJson).activities;
         console.log('Itinerary response successful')
+        console.log(res.locals.itinResponse);
         return next();
 
     } catch(error) {
@@ -51,12 +53,13 @@ openaiController.aiItinerary = async (req, res, next) => {
 }
 
 openaiController.aiVenues = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
+    const {name, date, days, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const venuePrompt = `
         Please give me a list of potential venues that actually exist, for an event I am planning, using the following information, if provided.
         name: ${name},
         date: ${date},
+        days: ${days},
         type: ${type},
         guest_size: ${guest_size},
         age_range: ${age_range},
@@ -83,11 +86,12 @@ openaiController.aiVenues = async (req, res, next) => {
             response_format: { "type": "json_object" },
             temperature: 0.4
         })
-        console.log('Raw venue response:', venueResponse.choices[0].message.content);
+        // console.log('Raw venue response:', venueResponse.choices[0].message.content);
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(venueResponse.choices[0].message.content))
         const correctedJson = venueResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
-        res.venueResponse = JSON.parse(correctedJson);
-        console.log('Venue response successful')
+        res.locals.venueResponse = JSON.parse(correctedJson).venues;
+        console.log('Venue response successful');
+        console.log(res.locals.venueResponse);
         return next();
 
     } catch(error) {
@@ -100,12 +104,13 @@ openaiController.aiVenues = async (req, res, next) => {
 }
 
 openaiController.aiShopList = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
+    const {name, date, days, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const shopPrompt = `
         Please generate a shopping list for me with prices and links to items, for an event I am planning, using the following information, if provided. 
         name: ${name},
         date: ${date},
+        days: ${days},
         type: ${type},
         guest_size: ${guest_size},
         age_range: ${age_range},
@@ -138,8 +143,9 @@ openaiController.aiShopList = async (req, res, next) => {
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(shopResponse.choices[0].message.content))
         
         const correctedJson = shopResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
-        res.shopResponse = JSON.parse(correctedJson);
+        res.locals.shopResponse = JSON.parse(correctedJson).shoppingList;
         console.log('Shopping List response successful')
+        console.log(res.locals.shopResponse)
         return next();
 
     } catch(error) {
@@ -152,12 +158,13 @@ openaiController.aiShopList = async (req, res, next) => {
 }
 
 openaiController.aiPlaylist = async (req, res, next) => {
-    const {name, date, type, guest_size, age_range, formality, theme, budget, location} = req.body;
+    const {name, date, days, type, guest_size, age_range, formality, theme, budget, location} = req.body;
 
     const plPrompt = `
         Please generate a playlist for an event I am planning, using the following information, if provided. 
         name: ${name},
         date: ${date},
+        days: ${days},
         type: ${type},
         guest_size: ${guest_size},
         age_range: ${age_range},
@@ -190,8 +197,9 @@ openaiController.aiPlaylist = async (req, res, next) => {
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(plResponse.choices[0].message.content))
 
         const correctedJson = plResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
-        res.plResponse = JSON.parse(correctedJson);
+        res.locals.plResponse = JSON.parse(correctedJson).playlist;
         console.log('Playlist response successful');
+        console.log(res.locals.plResponse);
         return next();
 
     } catch(error) {
@@ -206,13 +214,15 @@ openaiController.aiPlaylist = async (req, res, next) => {
 openaiController.combineData = async (req, res, next) => {
 
     const fullEvent = {
-        aiItinerary: res.itinResponse,
-        aiVenues: res.venueResponse,
-        aiShoppingList: res.shopResponse,
-        aiPlaylist: res.plResponse
+        activities: res.locals.itinResponse,
+        venues: res.locals.venueResponse,
+        shoppingList: res.locals.shopResponse,
+        playlist: res.locals.plResponse
     }
+    console.log('combine data is running');
+    console.log(fullEvent);
 
-    res.fullEvent = fullEvent;
+    res.locals.fullEvent = fullEvent;
     next();
 }
 

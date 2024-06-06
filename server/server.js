@@ -13,7 +13,21 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = ['http://localhost:8080'];
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,  // Reflect the request origin, as credentials are included
+  optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 const openaiRoutes = require('./routes/openaiRoutes.js');
 
@@ -80,7 +94,7 @@ app.use((err, req, res, next) => {
   };
 
   const errObj = Object.assign(defaultErr, err);
-  console.log(errObj.log)
+  console.log(errObj)
   // res.status(errObj.status).res.json(errObj.message);
   // res.json(errObj.message);
 });
