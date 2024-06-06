@@ -23,8 +23,8 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true,  // Reflect the request origin, as credentials are included
-  optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true, // Reflect the request origin, as credentials are included
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 app.use(cors(corsOptions));
@@ -94,7 +94,7 @@ app.use((err, req, res, next) => {
   };
 
   const errObj = Object.assign(defaultErr, err);
-  console.log(errObj.log);
+  console.log(errObj);
   // res.status(errObj.status).res.json(errObj.message);
   // res.json(errObj.message);
 });

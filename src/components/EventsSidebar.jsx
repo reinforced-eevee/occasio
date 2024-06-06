@@ -24,7 +24,7 @@ function EventsSidebar({events, setSelectedEventID}) {
             key={event.id}
             className='event-icon-box'
             onClick={() => {
-              setSelectedEventID(event.id);
+              setSelectedEventID(event._id);
             }}
           >
             {event.icon} {event.name}

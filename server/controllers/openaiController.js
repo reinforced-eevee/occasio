@@ -37,7 +37,7 @@ openaiController.aiItinerary = async (req, res, next) => {
         })
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(itinResponse.choices[0].message.content))
         const correctedJson = itinResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
-        res.itinResponse = JSON.parse(correctedJson);
+        res.locals.itinResponse = JSON.parse(correctedJson).activities;
         console.log('Itinerary response successful')
         return next();
 
@@ -83,11 +83,11 @@ openaiController.aiVenues = async (req, res, next) => {
             response_format: { "type": "json_object" },
             temperature: 0.4
         })
-        console.log('Raw venue response:', venueResponse.choices[0].message.content);
+        // console.log('Raw venue response:', venueResponse.choices[0].message.content);
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(venueResponse.choices[0].message.content))
         const correctedJson = venueResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
-        res.venueResponse = JSON.parse(correctedJson);
-        console.log('Venue response successful')
+        res.locals.venueResponse = JSON.parse(correctedJson).venues;
+        console.log('Venue response successful, values are :' + res.locals.venueResponse);
         return next();
 
     } catch(error) {
@@ -138,8 +138,8 @@ openaiController.aiShopList = async (req, res, next) => {
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(shopResponse.choices[0].message.content))
         
         const correctedJson = shopResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
-        res.shopResponse = JSON.parse(correctedJson);
-        console.log('Shopping List response successful')
+        res.locals.shopResponse = JSON.parse(correctedJson).shoppingList;
+        console.log('Shopping List response successful, shopping list is: ' + res.locals.shopResponse)
         return next();
 
     } catch(error) {
@@ -190,7 +190,7 @@ openaiController.aiPlaylist = async (req, res, next) => {
         // console.log('Response from openAi, converted to JSON: ', JSON.parse(plResponse.choices[0].message.content))
 
         const correctedJson = plResponse.choices[0].message.content.replace(/}\s*"/g, ',"').replace(/}\s*}/g, '}');
-        res.plResponse = JSON.parse(correctedJson);
+        res.locals.plResponse = JSON.parse(correctedJson).playlist;
         console.log('Playlist response successful');
         return next();
 
@@ -206,13 +206,14 @@ openaiController.aiPlaylist = async (req, res, next) => {
 openaiController.combineData = async (req, res, next) => {
 
     const fullEvent = {
-        aiItinerary: res.itinResponse,
-        aiVenues: res.venueResponse,
-        aiShoppingList: res.shopResponse,
-        aiPlaylist: res.plResponse
+        activities: res.locals.itinResponse,
+        venues: res.locals.venueResponse,
+        shoppingList: res.locals.shopResponse,
+        playlist: res.locals.plResponse
     }
+    console.log('combine data is running, full event is ' + fullEvent.aiVenues);
 
-    res.fullEvent = fullEvent;
+    res.locals.fullEvent = fullEvent;
     next();
 }
 

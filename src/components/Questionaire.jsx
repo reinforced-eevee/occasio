@@ -31,7 +31,7 @@ const Questionaire = () => {
     setIsSubmitting(true); // Set isSubmitting to true when form submission starts
     console.log('Form Data Submitted:', formData);
     try {
-      const response = await fetch('http://localhost:3000/openai/aiItinerary', {
+      const response = await fetch('http://localhost:3000/openai/createEvent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
