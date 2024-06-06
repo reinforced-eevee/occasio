@@ -13,10 +13,10 @@ export default function CurrEventDisplay({selectedEventID}) {
     return (
         <div className='event-container'>
             <section className='event-nav'>
-                <Link className='eNav-link' to='/itinerary'>Itinerary</Link>
-                <Link className='eNav-link' to='/venues'>Venues</Link>
-                <Link className='eNav-link' to='/shoplist'>Shopping List</Link>
-                <Link className='eNav-link' to='/playlist'>Playlist</Link>
+                <Link className='eNav-link itin-link' to='/itinerary'>Itinerary</Link>
+                <Link className='eNav-link venue-link' to='/venues'>Venues</Link>
+                <Link className='eNav-link shoplist-link' to='/shoplist'>Shopping List</Link>
+                <Link className='eNav-link playlist-link' to='/playlist'>Playlist</Link>
             </section>
             <section className='event-display'>
                 <Routes> 
