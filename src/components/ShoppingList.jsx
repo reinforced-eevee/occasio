@@ -1,0 +1,10 @@
+import React, { useState, useEffect } from 'react';
+
+export default function ShoppingList({ selectedEventID }) {
+    return (
+        <div>
+            <h1>Shopping List</h1>
+        </div>
+    )
+}
+
