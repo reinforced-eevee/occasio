@@ -6,18 +6,26 @@
     width: 100%;
     height: 100vh;
     margin: 0 auto;
-    padding: 60px 0px 0px 0px;
+    padding: 50px 0px 0px 0px;
 }
 
 .event-nav {
-    /* background-color: navy; */
-    width: 50%;
-    height: 3rem;
+    /* background-color: rgb(82, 199, 203); */
+    width: 60%;
+    height: 200px;
     padding: 20px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* position: relative;  */
+    /* overflow: visible;  */
 }
+
+/* .event-nav::before,
+.event-nav::after {
+    content: '';
+    flex: 1; /* Flex grow to push the links towards center */
+/* } */ 
 
 .eNav-link {
     color: white;
@@ -26,7 +34,10 @@
     border: 1px solid white;
     border-radius: 15px;
     padding: 10px 20px;
+    /* margin: 0px 40px; */
     transition: background-color 0.3s;
+    /* flex: 0 0 auto; Do not grow or shrink */
+    /* transform: scaleY(1.5); Stretch vertically to emphasize the arc */
 }
 
 .eNav-link:hover {
@@ -35,16 +46,20 @@
 
 .itin-link {
     background-color: rgb(179, 25, 112);
+    /* transform: rotate(-20deg) scaleY(1.5); */
 }
 
 .venue-link {
     background-color: orange;
+    /* transform: rotate(-10deg) scaleY(1.5); */
 }
 
 .shoplist-link {
     background-color: rgb(206, 176, 26);
+    /* transform: rotate(10deg) scaleY(1.5); */
 }
 
 .playlist-link {
     background-color: rgb(221, 149, 215);
+    /* transform: rotate(20deg) scaleY(1.5); */
 }
