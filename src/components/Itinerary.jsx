@@ -1,25 +1,45 @@
 import React, { useState, useEffect } from 'react';
 
 const Itinerary = ({ selectedEventID }) => {
-    const [eventDetails, setEventDetails] = useState('')
+  const [eventDetails, setEventDetails] = useState({});
 
-    const getEvent = () => {
-        fetch(`/events/${selectedEventID}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setEventDetails(data);
-            })
-            .catch((err) => console.log('Error retrieving event details: ', err));
-    };
+  const getEvent = () => {
+    fetch(`/events/${selectedEventID}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // setItinDetails(data.aiItinerary);
+      })
+      .catch((err) => console.log('Error retrieving event details: ', err));
+  };
 
-    useEffect(setEventDetails, []);
+  useEffect(() => {
+    getEvent();
+  }, [selectedEventID]);
 
-    return (
-        <div>
-            <h2>Itinerary</h2>
-            <div>My selected event ID is {selectedEventID}</div>
-        </div>
-    )
-}
-
-export default Itinerary;
+  return (
+    <section className='itin-container'>
+      <div className='event-title'>
+        <h1>
+          Itinerary for {itinDetails.name} on {itinDetails.date}
+        </h1>
+      </div>
+      <div className='itin-activities'>
+        {itinDetails.activities.map((activity) => (
+          <div className='itin-activity'>
+            <ul>
+              <li>
+                <h3>
+                  {activity.activity}: {activity.time_range}
+                </h3>
+                <ul>
+                  <li>{activity.activity_details}</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
