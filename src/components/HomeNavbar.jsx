@@ -12,7 +12,7 @@ function HomeNavbar(props) {
   return (
     <nav className='home-navBar'>
       <h2>
-        <a href='home/home/itinerary' className='logo'>
+        <a href='/home/home/itinerary' className='logo'>
           Occasio
         </a>
       </h2>
