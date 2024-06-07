@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
-import '../styling/EventsSidebar.css'; // Assuming you will create a CSS file for styles
+import React, { useState, useEffect } from 'react';
+import '../styling/EventsSidebar.css';
 
-function EventsSidebar({events, setSelectedEventID}) {
-  // const [selectedEvent, setSelectedEvent] = useState(null);
+function EventsSidebar({ events, setSelectedEventID }) {
+  const [userEvents, setUserEvents] = useState([]);
 
-  //mock data
-  // const events = [
-  //   { id: 1, name: 'Event 1', details: 'Details of Event 1' },
-  //   { id: 2, name: 'Event 2', details: 'Details of Event 2' },
-  //   { id: 3, name: 'Event 3', details: 'Details of Event 3' },
-  // ];
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/events', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include', // Ensures cookies are sent with the request
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setUserEvents(data);
+        } else {
+          throw new Error('Failed to fetch events');
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
 
-  // const handleEventClick = (event) => {
-  //   setSelectedEvent(event);
-  // };
+    fetchEvents();
+  }, []);
 
   return (
     <div className='events-sidebar'>
@@ -21,22 +34,14 @@ function EventsSidebar({events, setSelectedEventID}) {
       <div className='events-list'>
         {events.map((event) => (
           <div
-            key={event.id}
+            key={event._id}
             className='event-icon-box'
-            onClick={() => {
-              setSelectedEventID(event._id);
-            }}
+            onClick={() => setSelectedEventID(event._id)}
           >
             {event.icon} {event.name}
           </div>
         ))}
       </div>
-      {/* {selectedEvent && (
-        <div className='event-details'>
-          <h4>{selectedEvent.name}</h4>
-          <p>{selectedEvent.details}</p>
-        </div>
-      )} */}
     </div>
   );
 }

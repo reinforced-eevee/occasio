@@ -6,6 +6,7 @@ const path = require('path');
 const userController = require('./controllers/userController.js');
 const cookieController = require('./controllers/cookieController.js');
 const sessionController = require('./controllers/sessionController.js');
+const openaiRoutes = require('./routes/openaiRoutes.js');
 
 const eventRouter = require('./routes/eventRouter.js');
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '../build')));
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -23,13 +25,11 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true,  // Reflect the request origin, as credentials are included
-  optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true, // Reflect the request origin, as credentials are included
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 app.use(cors(corsOptions));
-
-const openaiRoutes = require('./routes/openaiRoutes.js');
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
@@ -83,8 +83,6 @@ app.get('/action/logout', sessionController.endSession, (req, res) => {
   res.redirect('/');
 });
 
-app.use('/events', eventRouter);
-
 // Global Error Handler
 app.use((err, req, res, next) => {
   const defaultErr = {
@@ -94,7 +92,7 @@ app.use((err, req, res, next) => {
   };
 
   const errObj = Object.assign(defaultErr, err);
-  console.log(errObj)
+  console.log(errObj);
   // res.status(errObj.status).res.json(errObj.message);
   // res.json(errObj.message);
 });
