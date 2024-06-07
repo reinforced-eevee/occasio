@@ -21,12 +21,14 @@ function Home() {
   };
   useEffect(getUser, []);
 
-
   return (
-    <div>
+    <div className="home">
       <HomeNavbar />
       <div className="home-container">
-        <EventsSidebar events={events} setSelectedEventID={setSelectedEventID} />
+        <EventsSidebar
+          events={events}
+          setSelectedEventID={setSelectedEventID}
+        />
         <Itinerary selectedEventID={selectedEventID} />
       </div>
     </div>

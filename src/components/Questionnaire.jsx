@@ -38,9 +38,9 @@ const Questionnaire = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-        credentials: 'include'
+        credentials: 'include',
       });
-      console.log(response)
+      console.log(response);
       if (!response.ok) {
         throw new Error('Network response was not OK');
       }
@@ -54,108 +54,117 @@ const Questionnaire = () => {
   };
 
   return (
-    <div className="questionnaire-background">
+    <div>
       <HomeNavbar />
-      <div className='questionaire-container'>
-        {isSubmitting && (
-          <div className='loader-container'>
-            <Rings
-              visible={true}
-              height='150'
-              width='150'
-              color='#4fa94d'
-              ariaLabel='rings-loading'
+      <div className="questionnaire-background">
+        <div className="questionaire-container">
+          {isSubmitting && (
+            <div className="loader-container">
+              <Rings
+                visible={true}
+                height="150"
+                width="150"
+                color="#4fa94d"
+                ariaLabel="rings-loading"
+              />
+            </div>
+          )}
+          <h2>Create new event</h2>
+          <form onSubmit={handleSubmit}>
+            <label>Name*</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
             />
-          </div>
-        )}
-        <h2>Create new event</h2>
-        <form onSubmit={handleSubmit}>
-          <label>Name*</label>
-          <input
-            type='text'
-            name='name'
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
 
-          <label>Date</label>
-          <input
-            type='date'
-            name='date'
-            value={formData.date}
-            onChange={handleChange}
-          />
+            <label>Date</label>
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+            />
 
-          <label>Number of Days</label>
-          <input
-            type='number'
-            name='days'
-            value={formData.days}
-            onChange={handleChange}
-          />
+            <label>Number of Days</label>
+            <input
+              type="number"
+              name="days"
+              value={formData.days}
+              onChange={handleChange}
+            />
 
-          <label>Type*</label>
-          <input
-            type='text'
-            name='type'
-            value={formData.type}
-            onChange={handleChange}
-          />
+            <label>Type*</label>
+            <input
+              type="text"
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+            />
 
-          <label>Number of guests*</label>
-          <input
-            type='number'
-            name='guest_size'
-            value={formData.guest_size}
-            onChange={handleChange}
-          />
+            <label>Number of guests*</label>
+            <input
+              type="number"
+              name="guest_size"
+              value={formData.guest_size}
+              onChange={handleChange}
+            />
 
-          <label>Age Range</label>
-          <input
-            type='string'
-            name='age_range'
-            value={formData.age_range}
-            onChange={handleChange}
-          />
+            <label>Age Range</label>
+            <input
+              type="string"
+              name="age_range"
+              value={formData.age_range}
+              onChange={handleChange}
+            />
 
-          <label>Location</label>
-          <input
-            type='text'
-            name='location'
-            value={formData.location}
-            onChange={handleChange}
-          />
+            <label>Location</label>
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+            />
 
-          <label>Theme</label>
-          <input
-            type='text'
-            name='theme'
-            value={formData.theme}
-            onChange={handleChange}
-          />
+            <label>Theme</label>
+            <input
+              type="text"
+              name="theme"
+              value={formData.theme}
+              onChange={handleChange}
+            />
 
-          <label>Attire</label>
-          <input
-            type='text'
-            name='formality'
-            value={formData.formality}
-            onChange={handleChange}
-          />
+            <label>Attire</label>
+            <input
+              type="text"
+              name="formality"
+              value={formData.formality}
+              onChange={handleChange}
+            />
 
-          <label>Budget</label>
-          <input
-            type='text'
-            name='budget'
-            value={formData.budget}
-            onChange={handleChange}
-          />
+            <label>Budget</label>
+            <input
+              type="text"
+              name="budget"
+              value={formData.budget}
+              onChange={handleChange}
+            />
 
-          <div><i>*Fields marked as * are required</i></div>
-          <button type='submit'
-            disabled={!formData.name || !formData.type || !formData.guest_size}
-          >Submit</button>
-        </form>
+            <div>
+              <i>*Fields marked as * are required</i>
+            </div>
+            <button
+              type="submit"
+              disabled={
+                !formData.name || !formData.type || !formData.guest_size
+              }
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
