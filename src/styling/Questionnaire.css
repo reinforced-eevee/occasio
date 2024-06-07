@@ -1,6 +1,8 @@
 .questionnaire-background {
   background-color: var(--bg-color);
   margin-top: 0;
+  min-height: 150vh;  /* Ensures it takes at least the full height of the viewport */
+
 }
 
 .questionaire-container {
@@ -18,7 +20,7 @@
   max-width: 600px;
   position: relative; /* Needed for absolute positioning of the loader */
   overflow-y: scroll;
-  max-height: 80vh;
+  /* max-height: 80vh; */
 }
 
 .questionaire-container form {
