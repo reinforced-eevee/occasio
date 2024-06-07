@@ -40,6 +40,17 @@ const config = {
         },
       },
       {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/images/[name].[hash].[ext]',
+            },
+          },
+        ],
+      },
+      {
         test: /(\.css|\.scss)$/,
         use: ['style-loader', 'css-loader'],
       },
