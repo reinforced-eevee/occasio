@@ -44,7 +44,7 @@ h4 {
 }
 .btn {
   text-transform: uppercase;
-  background: var(--tertiaryColor);
+  /* background: var(--tertiaryColor); */
   color: var(--buttonText);
   padding: 0.375rem 0.75rem;
   letter-spacing: var(--spacing);
