@@ -27,17 +27,16 @@ function Home() {
   // console.log('EventID Home Component, line 26: ', selectedEventID);
 
   return (
-    <div className="home">
+    <div className='home'>
       <HomeNavbar />
-      <div className="home-container">
+      <div className='home-container'>
         <EventsSidebar
           events={events}
           setSelectedEventID={setSelectedEventID}
           userID={user._id}
         />
-        {/* {selectedEventID && <Itinerary event={selectedEventID} />} */}
+
         <CurrEventDisplay selectedEventID={selectedEventID} />
-        <Itinerary selectedEventID={selectedEventID} events={events} />
       </div>
     </div>
   );

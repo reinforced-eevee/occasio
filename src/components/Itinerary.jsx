@@ -37,17 +37,17 @@ const Itinerary = ({ events, selectedEventID }) => {
   }, [selectedEventID]);
 
   return (
-    <section className="itin-container">
-      <div className="event-title">
+    <section className='itin-container'>
+      <div className='event-title'>
         <h1>
           Itinerary for {eventDetails.name} on {eventDetails.date}
         </h1>
       </div>
 
-      <div className="itin-activities">
+      <div className='itin-activities'>
         {eventDetails.activities &&
           eventDetails.activities.map((activity, index) => (
-            <div className="itin-activity" key={index}>
+            <div className='itin-activity' key={index}>
               <ul>
                 <li>
                   <h3>

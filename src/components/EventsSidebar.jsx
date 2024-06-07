@@ -17,6 +17,9 @@ function EventsSidebar({ events, setSelectedEventID }) {
         if (response.ok) {
           const data = await response.json();
           setUserEvents(data);
+          if (data.length > 0) {
+            setSelectedEventID(data[data.length - 1]._id); // Automatically select the last event
+          }
         } else {
           throw new Error('Failed to fetch events');
         }
@@ -26,13 +29,13 @@ function EventsSidebar({ events, setSelectedEventID }) {
     };
 
     fetchEvents();
-  }, []);
+  }, [setSelectedEventID]);
 
   return (
     <div className='events-sidebar'>
       <h3>My Events</h3>
       <div className='events-list'>
-        {events.map((event) => (
+        {userEvents.map((event) => (
           <div
             key={event._id}
             className='event-icon-box'
