@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 
 export default function Venues({ selectedEventID }) {
 
+    console.log('Venue component line 5, EventID: ', selectedEventID);
     const [venueDetails, setVenueDetails] = useState([]);
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
 
     const getEvent = () => {
-        fetch(`/events/${selectedEventID}`)
+        fetch(`http://localhost:3000/events/${selectedEventID}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-                // setVenueDetails(data.aiVenues.venues);
-                // setEventName(data.aiItinerary.name);
-                // setEventDate(data.aiItinerary.date);
+                console.log("venues ", data.venues);
+                console.log('selected event ID, ', selectedEventID)
+                setVenueDetails(data.venues);
+                setEventName(data.name);
+                setEventDate(data.date);
             })
             .catch((err) => console.log('Error retrieving event details: ', err));
     };
@@ -25,11 +28,12 @@ export default function Venues({ selectedEventID }) {
     return (
         <section className='venue-container event-container'>
             <div className='event-title'>
+                Test
                 <h1>Venues for {eventName} on {eventDate}</h1>
             </div>
             <div className='venue-list'>
-                {venueDetails.map((venue) => (
-                    <div className='venue-item'>
+                {venueDetails && venueDetails.map((venue) => (
+                    <div className='venue-item' key={venue.name}>
                         <h3>{venue.name}</h3>
                         <ul>
                             <li> Venue Address:

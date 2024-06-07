@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Router } from 'react-router-dom';
 import HomeNavbar from './HomeNavbar';
-import Questionaire from './Questionaire';
+import Questionnaire from './Questionnaire';
 import EventsSidebar from './EventsSidebar';
 import '../styling/Home.css';
 import Itinerary from './Itinerary';
@@ -23,10 +24,12 @@ function Home() {
   };
   useEffect(getUser, []);
 
+  // console.log('EventID Home Component, line 26: ', selectedEventID);
+
   return (
-    <div>
+    <div className="home">
       <HomeNavbar />
-      <div className='home-container'>
+      <div className="home-container">
         <EventsSidebar
           events={events}
           setSelectedEventID={setSelectedEventID}

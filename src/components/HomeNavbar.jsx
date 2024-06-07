@@ -3,10 +3,18 @@ import '../styling/HomeNavbar.css';
 
 function HomeNavbar(props) {
   return (
-    <nav className='home-navbar'>
-      <h2><a href="/home">Some logo</a></h2>
-      <h2><a href="/questionaire">Create Event</a></h2>
-      <h2><a href="/action/logout">Logout</a></h2>
+    <nav className="home-navBar">
+      <h2>
+        <a href="/home" className="logo">
+          Occasio
+        </a>
+      </h2>
+      <button type="button" className="home-btns">
+        Create Event
+      </button>
+      <button type="button" className="home-btns">
+        Log Out
+      </button>
     </nav>
   );
 }

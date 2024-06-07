@@ -15,11 +15,12 @@
   --text-color: #342c28;
 }
 
-.home-navBar {
-  width: 100%;
+.navBar {
+  max-width: 1, 440px;
+  width: 85%;
   max-height: 100px;
   height: auto;
-  padding: 24px 50px;
+  padding: 24px 150px;
   gap: 206px;
   justify-content: space-between;
   opacity: 0px;
@@ -30,11 +31,61 @@
   order: 0;
   flex-grow: 0;
   display: flex;
-  background: var(--bg-color);
-  margin-bottom: 0;
 }
 
-.home-btns {
+.logo {
+  font-family: 'Gugi', sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 45.77px;
+  letter-spacing: -0.05em;
+  text-align: left;
+  color: var(--primary-color);
+  width: 141px;
+  height: 46px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.logo-contain {
+  width: 198px;
+  max-height: 46px;
+  height: auto;
+  gap: 0px;
+  justify-content: space-between;
+  opacity: 0px;
+}
+
+.login {
+  max-width: 57px;
+  max-height: 32px;
+  padding: 2px 0px 2px 0px;
+  gap: 10px;
+  border: 0px 0px 1px 0px;
+  opacity: 0px;
+  background: var(--bg-color);
+  color: var(--neutral);
+  height: 28px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+
+.login:hover {
+  border-bottom: 1px solid var(--primary-color);
+  animation-duration: 0ms;
+}
+
+.signup {
   box-sizing: border-box;
   /* display: flex;
   flex-direction: row; */
@@ -47,11 +98,11 @@
   top: 78px;
   border: 1px solid var(--primary-color);
   border-radius: 65px;
-  max-width: 250px;
+  max-width: 120px;
   max-height: 52px;
   top: 78px;
   left: 429px;
-  padding: 5px 24px;
+  padding: 12px 24px 12px 24px;
   gap: 10px;
   opacity: 0px;
   font-family: 'Open Sans', sans-serif;
@@ -62,14 +113,28 @@
   flex: none;
   order: 0;
   flex-grow: 0;
-  background: #cd4e07;
-  color: var(--bg-color);
+  background: var(--bg-color);
+  color: var(--neutral);
   white-space: nowrap;
   cursor: pointer;
-  transition: var(--transition);
 }
 
-.home-btns:hover {
-  background: var(--bg-color);
-  color: white;
+.signup:hover {
+  animation-duration: 0ms;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  border: none;
+}
+
+.navButtons {
+  /* display: inline-flex;
+  flex-direction: row; */
+  display: flex;
+  align-items: center;
+  max-width: 201px;
+  width: auto;
+  max-height: 52px;
+  height: auto;
+  gap: 24px;
+  opacity: 0px;
 }

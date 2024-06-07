@@ -38,24 +38,25 @@ eventController.getEvent = async (req, res, next) => {
 
 // controller to post info after getting api data
 eventController.addEvent = async (req, res, next) => {
-  const userID = req.cookies.ssid;
-  console.log('addEVent running, userID is ' + userID);
-  // update fields
-  const {
-    name,
-    date,
-    type,
-    guest_size,
-    age_range,
-    location,
-    theme,
-    formality,
-    budget,
-    // venues,
-    // activities,
-    // playlist,
-    // shoppingList
-  } = req.body;
+    const userID = req.cookies.ssid;
+    console.log('addEVent running, userID is ' + userID)
+    // update fields
+    const {
+        name,
+        date,
+        days,
+        type,
+        guest_size,
+        age_range,
+        location,
+        theme,
+        formality,
+        budget,
+        // venues,
+        // activities,
+        // playlist,
+        // shoppingList
+      } = req.body;
 
   console.log('name is ' + name);
   const { venues, activities, playlist, shoppingList } = res.locals.fullEvent;
