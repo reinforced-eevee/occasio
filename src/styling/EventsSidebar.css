@@ -31,6 +31,21 @@
   margin: 10px;
   border: 1px solid #ddd;
   font-size: 20px;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.event-icon-box:hover,
+.event-icon-box:focus {
+  background-color: #e6e6e6; /* Slightly darker on hover/focus for better interaction feedback */
+}
+
+.event-icon-box.selected {
+  background-color: #f0f0f0; /* Light grey background for the selected event */
+  border-left: 5px solid blue; /* Blue left border for the selected event */
+  outline: none; /* Remove default focus outline */
 }
 
 .event-details {
