@@ -34,7 +34,7 @@ const Login = () => {
     .then((bool) => {
       setCorrectCredential(bool);
       if (bool) {
-        navigate('/home');
+        navigate('/home/home/itinerary');
       }
     })
     .catch((err) => console.log('App: log in error ', err));

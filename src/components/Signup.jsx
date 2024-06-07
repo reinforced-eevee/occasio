@@ -32,7 +32,7 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((bool) => {
         if (bool) {
-          navigate('/home');
+          navigate('/home/home/itinerary');
         }
       })
       .catch((err) => console.log('App: create user error ', err));

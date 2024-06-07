@@ -32,7 +32,7 @@ function EventsSidebar({ events, setSelectedEventID }) {
   // }, [setSelectedEventID]);
   useEffect(() => {
     if (events.length > 0) {
-      setSelectedEventID(events[events.length - 1]._id);
+      setSelectedEventID(events[0]._id);
     }
   }, [events, setSelectedEventID]);
 
