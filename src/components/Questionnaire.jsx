@@ -22,7 +22,6 @@ const Questionnaire = () => {
   const [modalMessage, setModalMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -30,20 +29,26 @@ const Questionnaire = () => {
     });
   };
 
-  const messages = ["Submitting your data...", "Generating itinerary...", "Generating venue...", "Generating shopping list...", "Generating playlist....", "Finalizing details..."];
+  const messages = [
+    'Submitting your data...',
+    'Generating itinerary...',
+    'Generating venue...',
+    'Generating shopping list...',
+    'Generating playlist....',
+    'Finalizing details...',
+  ];
 
   const Modal = ({ isOpen, message }) => {
     if (!isOpen) return null;
 
     return (
-      <div className="modal">
-        <div className="modal-content">
+      <div className='modal'>
+        <div className='modal-content'>
           <p>{message}</p>
         </div>
       </div>
     );
   };
-
 
   useEffect(() => {
     let interval;
@@ -53,7 +58,7 @@ const Questionnaire = () => {
       interval = setInterval(() => {
         messageIndex = (messageIndex + 1) % messages.length;
         setModalMessage(messages[messageIndex]);
-      }, 8000); 
+      }, 8000);
     }
 
     return () => clearInterval(interval);
@@ -79,27 +84,27 @@ const Questionnaire = () => {
       }
       const result = await response.json();
       console.log('Itinerary submitted:', result);
-      navigate('/home');
+      navigate('/home/home/itinerary');
     } catch (error) {
       console.error('Failed to submit form:', error);
     }
     setIsSubmitting(false); // Set isSubmitting to false after form submission is complete
     setShowModal(false);
   };
-  
+
   return (
-    <div className="questionnaire-background">
+    <div className='questionnaire-background'>
       <HomeNavbar />
       <Modal isOpen={showModal} message={modalMessage} />
-      <div className="questionaire-container">
+      <div className='questionaire-container'>
         {isSubmitting && (
-          <div className="loader-container">
+          <div className='loader-container'>
             <Rings
               visible={true}
-              height="150"
-              width="150"
-              color="#4fa94d"
-              ariaLabel="rings-loading"
+              height='150'
+              width='150'
+              color='#cd4e07'
+              ariaLabel='rings-loading'
             />
           </div>
         )}
@@ -107,8 +112,8 @@ const Questionnaire = () => {
         <form onSubmit={handleSubmit}>
           <label>Name*</label>
           <input
-            type="text"
-            name="name"
+            type='text'
+            name='name'
             value={formData.name}
             onChange={handleChange}
             required
@@ -116,72 +121,74 @@ const Questionnaire = () => {
 
           <label>Date</label>
           <input
-            type="date"
-            name="date"
+            type='date'
+            name='date'
             value={formData.date}
             onChange={handleChange}
           />
 
           <label>Number of Days</label>
           <input
-            type="number"
-            name="days"
+            type='number'
+            name='days'
             value={formData.days}
             onChange={handleChange}
           />
 
-          <label>Type of Event (e.g. Birthday party, Trip to Bali, etc.)*</label>
+          <label>
+            Type of Event (e.g. Birthday party, Trip to Bali, etc.)*
+          </label>
           <input
-            type="text"
-            name="type"
+            type='text'
+            name='type'
             value={formData.type}
             onChange={handleChange}
           />
 
           <label>Number of guests*</label>
           <input
-            type="number"
-            name="guest_size"
+            type='number'
+            name='guest_size'
             value={formData.guest_size}
             onChange={handleChange}
           />
 
           <label>Age Range</label>
           <input
-            type="string"
-            name="age_range"
+            type='string'
+            name='age_range'
             value={formData.age_range}
             onChange={handleChange}
           />
 
           <label>Location</label>
           <input
-            type="text"
-            name="location"
+            type='text'
+            name='location'
             value={formData.location}
             onChange={handleChange}
           />
 
           <label>Theme</label>
           <input
-            type="text"
-            name="theme"
+            type='text'
+            name='theme'
             value={formData.theme}
             onChange={handleChange}
           />
 
           <label>Attire</label>
           <input
-            type="text"
-            name="formality"
+            type='text'
+            name='formality'
             value={formData.formality}
             onChange={handleChange}
           />
 
           <label>Budget</label>
           <input
-            type="text"
-            name="budget"
+            type='text'
+            name='budget'
             value={formData.budget}
             onChange={handleChange}
           />
@@ -190,7 +197,7 @@ const Questionnaire = () => {
             <i>*Fields marked as * are required</i>
           </div>
           <button
-            type="submit"
+            type='submit'
             disabled={!formData.name || !formData.type || !formData.guest_size}
           >
             Submit

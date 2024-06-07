@@ -6,7 +6,14 @@ const Itinerary = ({ events, selectedEventID }) => {
   // console.log('selectedEventID', selectedEventID);
   const [eventDetails, setEventDetails] = useState({
     activities: [],
+    name: '',
+    date: '',
   });
+
+  const formatDate = (isoDateString) => {
+    const date = new Date(isoDateString);
+    return date.toLocaleDateString('en-CA').replace(/-/g, '/');
+  };
 
   const getEvent = () => {
     const url = `http://localhost:3000/events/${selectedEventID}`;
@@ -14,42 +21,46 @@ const Itinerary = ({ events, selectedEventID }) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        //   console.log('Data:', data);
-        setEventDetails(data);
+        const formattedDate = formatDate(data.date);
+        setEventDetails({
+          ...data,
+          date: formattedDate, // Set the formatted date
+        });
       })
       .catch((err) => console.log('Error retrieving event details: ', err));
   };
-  //   const getEvent = () => {
-  //     const url = `http://localhost:3000/events/${selectedEventID}`;
-  //     // console.log('Fetching from URL:', url); // Log the URL to check it
-  //     fetch(url)
-  //       .then((res) => {
-  //         // console.log('Raw Response:', res); // Log the raw response
-  //         return res.json(); // Parse the response to JSON
-  //       })
-  //       .then((data) => {
-  //         // console.log('Data:', data); // Log the parsed data
-  //         setEventDetails(data);
-  //       })
-  //       .catch((err) => console.log('Error retrieving event details: ', err));
-  //   };
 
   useEffect(() => {
     getEvent();
   }, [selectedEventID]);
 
+  //temp styling to make it visible on dark background
+  const itineraryStyles = {
+    backgroundColor: '#333', // Dark background
+    color: '#fff', // White text color
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+  };
+
+  const titleStyle = {
+    borderBottom: '1px solid #555',
+    paddingBottom: '10px',
+    marginBottom: '20px',
+  };
+
   return (
-    <section className="itin-container event-container">
-      <div className="event-title">
+    <section className='itin-container event-container' style={itineraryStyles}>
+      <div className='event-title' style={titleStyle}>
         <h1>
           Itinerary for {eventDetails.name} on {eventDetails.date}
         </h1>
       </div>
 
-      <div className="itin-act-container act-container">
+      <div className='itin-act-container act-container'>
         {eventDetails.activities &&
           eventDetails.activities.map((activity, index) => (
-            <div className="itin-activity" key={index}>
+            <div className='itin-activity' key={index}>
               <ul>
                 <li>
                   <h3>

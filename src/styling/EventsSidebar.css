@@ -5,8 +5,9 @@
   border: 1px solid #ccc;
   padding: 20px;
   width: 30r;
-  height: 300px;
+  height: 100vh;
   background-color: #f9f9f9;
+  flex: 0 0 200px;
 }
 
 .carousel {
@@ -30,19 +31,32 @@
   height: 100px;
   margin: 10px;
   border: 1px solid #ddd;
-  font-size: 20px;
+  font-size: 15px;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.event-icon-box:hover,
+.event-icon-box:focus {
+  background-color: #e6e6e6; /* Slightly darker on hover/focus for better interaction feedback */
+}
+
+.event-icon-box.selected {
+  background-color: #f0f0f0; /* Light grey background for the selected event */
+  border-left: 5px solid blue; /* Blue left border for the selected event */
+  outline: none; /* Remove default focus outline */
 }
 
 .event-details {
   text-align: center;
   margin-top: 20px;
 }
-.events-sidebar {
-  flex: 0 0 200px;
-}
+
 .events-list {
   overflow-y: auto;
-  max-height: 220px; /* Adjusted to fit within the sidebar height */
+  /* max-height: 220px;  */
   width: 100%;
   padding: 5px;
 }

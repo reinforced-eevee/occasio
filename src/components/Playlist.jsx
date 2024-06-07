@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Playlist({ selectedEventID }) {
-    const [playlistDetails, setPlaylistDetails] = useState([]);
-    const [eventName, setEventName] = useState('');
-    const [eventDate, setEventDate] = useState('');
+  const [playlistDetails, setPlaylistDetails] = useState([]);
+  const [eventName, setEventName] = useState('');
+  const [eventDate, setEventDate] = useState('');
+
+  const formatDate = (isoDateString) => {
+    const date = new Date(isoDateString);
+    return date.toLocaleDateString('en-CA').replace(/-/g, '/');
+  };
 
     const colorClasses = ['lightGreen', 'grassGreen', 'darkTeal', 'teal', 'lightBlue', 'midBlue', 'darkBlue','darkPurple', 'purple'];
 
-    const getEvent = () => {
-        fetch(`http://localhost:3000/events/${selectedEventID}`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setPlaylistDetails(data.playlist);
-                setEventName(data.name);
-                setEventDate(data.date);
-            })
-            .catch((err) => console.log('Error retrieving event details: ', err));
-    };
+  const getEvent = () => {
+    fetch(`http://localhost:3000/events/${selectedEventID}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setPlaylistDetails(data.playlist);
+        setEventName(data.name);
+        const formattedDate = formatDate(data.date);
+        setEventDate(formattedDate);
+      })
+      .catch((err) => console.log('Error retrieving event details: ', err));
+  };
 
-    useEffect(() => {
-        getEvent();
-    }, [selectedEventID]);
+  useEffect(() => {
+    getEvent();
+  }, [selectedEventID]);
 
     return (
         <section className='playlist-container event-container'>
@@ -46,4 +52,3 @@ export default function Playlist({ selectedEventID }) {
         </section>
     )
 }
-
