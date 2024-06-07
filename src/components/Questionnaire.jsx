@@ -19,6 +19,9 @@ const Questionnaire = () => {
     budget: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
 
   const handleChange = (e) => {
     setFormData({
@@ -27,9 +30,39 @@ const Questionnaire = () => {
     });
   };
 
+  const messages = ["Submitting your data...", "Generating itinerary...", "Generating venue...", "Generating shopping list...", "Generating playlist....", "Finalizing details..."];
+
+  const Modal = ({ isOpen, message }) => {
+    if (!isOpen) return null;
+
+    return (
+      <div className="modal">
+        <div className="modal-content">
+          <p>{message}</p>
+        </div>
+      </div>
+    );
+  };
+
+
+  useEffect(() => {
+    let interval;
+    if (showModal) {
+      let messageIndex = 0;
+      setModalMessage(messages[messageIndex]);
+      interval = setInterval(() => {
+        messageIndex = (messageIndex + 1) % messages.length;
+        setModalMessage(messages[messageIndex]);
+      }, 8000); 
+    }
+
+    return () => clearInterval(interval);
+  }, [showModal]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true); // Set isSubmitting to true when form submission starts
+    setShowModal(true);
     console.log('Form Data Submitted:', formData);
     try {
       const response = await fetch('http://localhost:3000/openai/createEvent', {
@@ -51,11 +84,13 @@ const Questionnaire = () => {
       console.error('Failed to submit form:', error);
     }
     setIsSubmitting(false); // Set isSubmitting to false after form submission is complete
+    setShowModal(false);
   };
-
+  
   return (
     <div className="questionnaire-background">
       <HomeNavbar />
+      <Modal isOpen={showModal} message={modalMessage} />
       <div className="questionaire-container">
         {isSubmitting && (
           <div className="loader-container">

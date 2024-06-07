@@ -21,7 +21,7 @@ eventController.getEvents = async (req, res, next) => {
 // controller to get info for a single event
 eventController.getEvent = async (req, res, next) => {
   const eventID = req.params.eventID;
-  console.log('Fetching event with ID:', eventID);
+  // console.log('Fetching event with ID:', eventID);
   try {
     const event = await Event.findOne({ _id: eventID });
     // console.log('event is ' + event);
