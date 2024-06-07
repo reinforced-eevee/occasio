@@ -1,32 +1,99 @@
 
-/* Northern Lights Color Pallete */
-.lightGreen { background-color: #2fe97f}
-.grassGreen { background-color: #1fd13d}
-.darkTeal { background-color: #005d55}
-.teal { background-color: #15c7be}
-.lightBlue { background-color: #00e8e4}
-.midBlue { background-color: #0099ff}
-.darkBlue { background-color: #2a1196}
-.purple { background-color: #881dd4}
-.darkPurple { background-color: #4e1960}
-
 /* Occasio Color Pallete */
 .navy { background-color: #0A0220}
+.magenta { background-color: rgb(179, 25, 112)}
 .orange { background-color: #CD4E07}
-.yellow { background-color: #ffd700}
+.lightOrange { background-color: rgb(255, 165, 0)}
+.yellow { background-color: #ffc400fb}
 .pink { background-color: #F1CFD3}
+.purpPink { background-color: rgb(221, 149, 215)}
 .cream { background-color: #DDD6D1}
 
 .event-title {
-    color: white;
-    font-size: 1.5rem;
+    color: #DDD6D1;
+    font-size: 2rem;
     font-weight: bold;
 }
 
 .act-container {
-    color: white;
-    font-size: 1rem;
+    color: #DDD6D1;
+    font-size: 1.1rem;
     font-weight: 300;
+    max-width: 80%;
+}
+
+.itin-activity-title {
+    text-shadow: 0.1rem 0.1rem 0.1rem #000000;
+}
+
+.itin-activity-details {
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 1rem;
+    background-color: #212126;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.6rem;
+    display: inline-block;
+}
+
+.itin-activity {
+    padding: 1rem;
+    margin: 1.5rem;
+    border-radius: 0.6rem;
+}
+
+.venue-item {
+    padding: 1rem;
+    margin: 1.5rem;
+    border-radius: 0.6rem;
+}
+.venue-item-title {
+    color: #ffffff;
+    font-size: 1.12rem;
+    font-weight: 300;
+    text-shadow: 0.08rem 0.08rem 0.08rem #000000;
+}
+.venue-item-name {
+    text-shadow: 0.1rem 0.1rem 0.1rem #000000;
+    color: #DDD6D1;
+}
+
+.venue-descrip {
+    background-color: #212126;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.6rem;
+    color: #ffffff;
+    display: inline-block;
+}
+
+.shoplist-item {
+    padding: 1rem;
+    margin: 1.5rem;
+    border-radius: 0.6rem;
+}
+
+.shopList-titleLink {
+    text-shadow: 0.1rem 0.1rem 0.1rem #000000;
+}
+
+.shoplist-item-title {
+    text-shadow: 0.1rem 0.1rem 0.1rem #000000;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #DDD6D1;
+}
+
+.shoplist-item-descrip {
+    background-color: #212126;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.6rem;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 1.2rem;
+    display: inline-block;
 }
 
 .playlist-act-container {
@@ -59,24 +126,33 @@
 }
 .playlist-title {
     color: white;
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 0.2rem;
+    font-size: 1rem;
+    font-weight: 580;
     text-shadow: 0.1rem 0.1rem 0.1rem #000000;
+    background-color: #212126;
+    padding: 0.3rem;
+    margin: 0.2rem;
+    border-radius: 0.6rem;
 }
 
 .playlist-artist {
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 500;
+    color: #DDD6D1;
+    font-size: 1rem;
+    font-weight: 400;
     text-shadow: 0.1rem 0.1rem 0.1rem #000000;
-    padding: 0.2rem;
+    background-color: #212126;
+    padding: 0.3rem;
+    margin: 0.2rem;
+    border-radius: 0.6rem;
 }
 
 .playlist-genre {
-    color: white;
-    font-size: 1.1rem;
+    color: #DDD6D1;
+    font-size: 1rem;
     font-weight: 400;
     text-shadow: 0.1rem 0.1rem 0.1rem #000000;
-    padding: 0.2rem;
+    background-color: #212126;
+    padding: 0.3rem;
+    margin: 0.2rem;
+    border-radius: 0.6rem;
 }

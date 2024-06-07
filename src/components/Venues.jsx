@@ -6,6 +6,8 @@ export default function Venues({ selectedEventID }) {
   const [eventName, setEventName] = useState('');
   const [eventDate, setEventDate] = useState('');
 
+  const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'pink', 'purpPink'];
+
   const formatDate = (isoDateString) => {
     const date = new Date(isoDateString);
     return date.toLocaleDateString('en-CA').replace(/-/g, '/');
@@ -37,19 +39,19 @@ export default function Venues({ selectedEventID }) {
                 <h1>Venues: {eventName}, {eventDate}</h1>
             </div>
             <div className='venue-act-container act-container'>
-                {venueDetails && venueDetails.map((venue) => (
-                    <div className='venue-item' key={venue.name}>
-                        <h3>{venue.name}</h3>
+                {venueDetails && venueDetails.map((venue, index) => (
+                    <div className={`venue-item ${colorClasses[index % colorClasses.length]}`} key={venue.name}>
+                        <h3 className='venue-item-name'>{venue.name}</h3>
                         <ul>
-                            <li> Venue Address:
+                            <li className='venue-item-title'> Venue Address:
                                 <ul>
-                                    <li>{venue.address}</li>
+                                    <li className='venue-descrip'>{venue.address}</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className='venue-item-title'>
                                 Venue Description:
                                 <ul>
-                                    <li>{venue.venue_description}</li>
+                                    <li className='venue-descrip'>{venue.venue_description}</li>
                                 </ul>
                             </li>
                         </ul>
