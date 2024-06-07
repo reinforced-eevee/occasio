@@ -73,3 +73,7 @@
   background: var(--bg-color);
   color: white;
 }
+
+.navBar-right > * {  
+  margin-right: 20px;  
+}

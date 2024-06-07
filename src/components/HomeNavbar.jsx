@@ -18,6 +18,7 @@ function HomeNavbar(props) {
           Occasio
         </a>
       </h2>
+      <div className="navBar-right">
       <button type="button" className="home-btns" onClick={handleQuestionnaireDirect}>
         Create Event
       </button>
@@ -26,6 +27,7 @@ function HomeNavbar(props) {
           Log Out
         </button>
       </a>
+      </div>
     </nav>
   );
 }
