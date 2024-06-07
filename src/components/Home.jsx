@@ -17,6 +17,7 @@ function Home() {
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
+        // console.log('user is ' + data._id);
         setEvents(data.events);
       })
       .catch((err) => console.log('Error getting user: ', err));
@@ -29,9 +30,15 @@ function Home() {
   return (
     <div>
       <HomeNavbar />
-      <div className="home-container">
-        <EventsSidebar events={events} setSelectedEventID={setSelectedEventID} />
+      <div className='home-container'>
+        <EventsSidebar
+          events={events}
+          setSelectedEventID={setSelectedEventID}
+          userID={user._id}
+        />
+        {/* {selectedEventID && <Itinerary event={selectedEventID} />} */}
         <CurrEventDisplay selectedEventID={selectedEventID} />
+        <Itinerary selectedEventID={selectedEventID} events={events} />
       </div>
     </div>
   );
