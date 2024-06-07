@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Playlist({ selectedEventID }) {
-    const [playlistDetails, setPlaylistDetails] = useState({});
+    const [playlistDetails, setPlaylistDetails] = useState([]);
+    const [eventName, setEventName] = useState('');
+    const [eventDate, setEventDate] = useState('');
 
     const getEvent = () => {
-        fetch(`/events/${selectedEventID}`)
+        fetch(`http://localhost:3000/events/${selectedEventID}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-                // setPlaylistDetails(data.aiPlaylist);
+                setPlaylistDetails(data.playlist);
+                setEventName(data.name);
+                setEventDate(data.date);
             })
             .catch((err) => console.log('Error retrieving event details: ', err));
     };
@@ -20,12 +24,12 @@ export default function Playlist({ selectedEventID }) {
     return (
         <section className='playlist-container event-container'>
             <div className='event-title'>
-                <h1>{playlistDetails.playlist_title}</h1>
-                <h2>{playlistDetails.event_name}, {playlistDetails.event_date}</h2>
+                {/* <h1>{playlistDetails.playlist}</h1> */}
+                <h2>Playlist for {eventName} on {eventDate}</h2>
             </div>
             <div className='playlist'>
-                {playlistDetails.playlist.map((song, index) => (
-                    <div className='playlist-item'>
+                {playlistDetails && playlistDetails.map((song, index) => (
+                    <div className='playlist-item' key={song._id}>
                         <ul>
                             <li>{index}.</li>
                                 <ul>

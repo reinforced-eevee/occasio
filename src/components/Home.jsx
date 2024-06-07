@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Router} from 'react-router-dom';
 import HomeNavbar from './HomeNavbar';
 import Questionaire from './Questionaire';
 import EventsSidebar from './EventsSidebar';
@@ -21,6 +22,8 @@ function Home() {
       .catch((err) => console.log('Error getting user: ', err));
   };
   useEffect(getUser, []);
+
+  // console.log('EventID Home Component, line 26: ', selectedEventID);
 
 
   return (

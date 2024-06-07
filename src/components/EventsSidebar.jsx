@@ -21,7 +21,7 @@ function EventsSidebar({events, setSelectedEventID}) {
       <div className='events-list'>
         {events.map((event) => (
           <div
-            key={event.id}
+            key={event._id}
             className='event-icon-box'
             onClick={() => {
               setSelectedEventID(event._id);

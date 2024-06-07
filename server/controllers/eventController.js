@@ -21,6 +21,7 @@ eventController.getEvents = async (req, res, next) => {
 // controller to get info for a single event
 eventController.getEvent = async (req, res, next) => {
     const eventID = req.params.eventID;
+    console.log('eventID in controller ', eventID);
     try {
         const event = await Event.findOne({ _id: eventID});
         res.locals.event = event;
@@ -29,7 +30,7 @@ eventController.getEvent = async (req, res, next) => {
         return next({
             log: 'Error in eventController.getEvent',
             status: 400,
-            message: {err: 'Error getting event information'}
+            message: {err: 'Error getting event information' + error.message}
         })
     }
 }
