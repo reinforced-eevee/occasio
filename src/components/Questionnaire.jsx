@@ -130,7 +130,7 @@ const Questionnaire = () => {
             onChange={handleChange}
           />
 
-          <label>Type*</label>
+          <label>Type of Event (e.g. Birthday party, Trip to Bali, etc.)*</label>
           <input
             type="text"
             name="type"
