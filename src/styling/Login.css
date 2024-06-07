@@ -1,6 +1,7 @@
 .page-container {
   height: 100vh;
-  background: var(--backgroundColor);
+  /* background: var(--backgroundColor); */
+  background: #0A0220;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +11,9 @@
   font-size: 1.5rem;
   width: 27rem;
   height: 35rem;
-  background: var(--headingColor);
+  /* background: var(--headingColor); */
+  background: #f1cfd3;
+  /* color: #ddd6d1; */
   padding: 5rem 4rem;
   border-radius: var(--radius);
   border: 2px solid var(--black);
@@ -23,6 +26,7 @@
 }
 .login-btn {
   margin: 1.5rem 0;
+  background: white;
 }
 .login-btn:hover {
   background: var(--btnColor);

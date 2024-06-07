@@ -1,7 +1,16 @@
 import React from 'react';
 import '../styling/HomeNavbar.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function HomeNavbar(props) {
+
+  const navigate = useNavigate();
+
+  const handleQuestionnaireDirect = () => {
+    navigate('/questionnaire');
+  }
+
   return (
     <nav className="home-navBar">
       <h2>
@@ -9,12 +18,16 @@ function HomeNavbar(props) {
           Occasio
         </a>
       </h2>
-      <button type="button" className="home-btns">
+      <div className="navBar-right">
+      <button type="button" className="home-btns" onClick={handleQuestionnaireDirect}>
         Create Event
       </button>
-      <button type="button" className="home-btns">
-        Log Out
-      </button>
+      <a href="/action/logout">
+        <button type="button" className="home-btns">
+          Log Out
+        </button>
+      </a>
+      </div>
     </nav>
   );
 }

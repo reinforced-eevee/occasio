@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Itinerary = ({ events, selectedEventID }) => {
-  console.log('selectedEventID', selectedEventID);
+  // console.log('selectedEventID', selectedEventID);
   const [eventDetails, setEventDetails] = useState({
     activities: [],
   });
