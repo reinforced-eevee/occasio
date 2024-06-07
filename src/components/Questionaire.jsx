@@ -20,6 +20,7 @@ const Questionaire = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formatDate = (datetime) => {
+    if (!datetime) return ''; // Return an empty string if datetime is falsy
     return datetime.split('T')[0];
   };
 
@@ -35,6 +36,7 @@ const Questionaire = () => {
     setIsSubmitting(true); // Set isSubmitting to true when form submission starts
 
     const formattedDate = formatDate(formData.date);
+    console.log('Formatted Date:', formattedDate);
 
     const updatedFormData = {
       ...formData,
