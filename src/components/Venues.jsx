@@ -28,8 +28,7 @@ export default function Venues({ selectedEventID }) {
     return (
         <section className='venue-container event-container'>
             <div className='event-title'>
-                Test
-                <h1>Venues for {eventName} on {eventDate}</h1>
+                <h1>Venues: {eventName}, {eventDate}</h1>
             </div>
             <div className='venue-act-container act-container'>
                 {venueDetails && venueDetails.map((venue) => (

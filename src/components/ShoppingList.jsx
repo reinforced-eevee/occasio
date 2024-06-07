@@ -24,7 +24,7 @@ export default function ShoppingList({ selectedEventID }) {
     return (
         <section className='shoplist-container event-container'>
             <div className='event-title'>
-                <h1>Shopping List for {eventName} on {eventDate}</h1>
+                <h1>Shopping List: {eventName}, {eventDate}</h1>
             </div>
             <div className='shoplist-act-container act-container'>
                 {shopListDetails && shopListDetails.map((item) => (

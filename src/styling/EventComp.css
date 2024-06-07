@@ -1,11 +1,5 @@
-/* .event-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-} */
 
+/* Northern Lights Color Pallete */
 .lightGreen { background-color: #2fe97f}
 .grassGreen { background-color: #1fd13d}
 .darkTeal { background-color: #005d55}
@@ -16,6 +10,12 @@
 .purple { background-color: #881dd4}
 .darkPurple { background-color: #4e1960}
 
+/* Occasio Color Pallete */
+.navy { background-color: #0A0220}
+.orange { background-color: #CD4E07}
+.yellow { background-color: #ffd700}
+.pink { background-color: #F1CFD3}
+.cream { background-color: #DDD6D1}
 
 .event-title {
     color: white;
@@ -59,7 +59,7 @@
 }
 .playlist-title {
     color: white;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     padding: 0.2rem;
     text-shadow: 0.1rem 0.1rem 0.1rem #000000;
@@ -67,16 +67,16 @@
 
 .playlist-artist {
     color: white;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
-    text-shadow: 0.1rem 0.2rem 0.1rem #000000;
+    text-shadow: 0.1rem 0.1rem 0.1rem #000000;
     padding: 0.2rem;
 }
 
 .playlist-genre {
     color: white;
-    font-size: 1rem;
-    font-weight: 300;
-    text-shadow: 0.1rem 0.2rem 0.1rem #000000;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-shadow: 0.1rem 0.1rem 0.1rem #000000;
     padding: 0.2rem;
 }

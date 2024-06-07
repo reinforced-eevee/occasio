@@ -27,7 +27,7 @@ export default function Playlist({ selectedEventID }) {
         <section className='playlist-container event-container'>
             <div className='event-title'>
                 {/* <h1>{playlistDetails.playlist}</h1> */}
-                <h2>Playlist for {eventName} on {eventDate}</h2>
+                <h2>Playlist: {eventName}, {eventDate}</h2>
             </div>
             <div className='playlist-act-container act-container'>
                 {playlistDetails && playlistDetails.map((song, index) => (
