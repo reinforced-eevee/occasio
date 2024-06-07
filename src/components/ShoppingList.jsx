@@ -26,7 +26,7 @@ export default function ShoppingList({ selectedEventID }) {
             <div className='event-title'>
                 <h1>Shopping List for {eventName} on {eventDate}</h1>
             </div>
-            <div className='shoppinglist'>
+            <div className='shoplist-act-container act-container'>
                 {shopListDetails && shopListDetails.map((item) => (
                     <div className='song-item' key={item._id}>
                     <h3><a href={item.item_link} target='_blank' rel='noopener noreferrer' className='shopList-titleLink'>{item.list_item}</a></h3>

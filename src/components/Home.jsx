@@ -37,7 +37,7 @@ function Home() {
         />
         {/* {selectedEventID && <Itinerary event={selectedEventID} />} */}
         <CurrEventDisplay selectedEventID={selectedEventID} />
-        <Itinerary selectedEventID={selectedEventID} events={events} />
+        {/* <Itinerary selectedEventID={selectedEventID} events={events} /> */}
       </div>
     </div>
   );

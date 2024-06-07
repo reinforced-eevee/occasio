@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import '../styling/EventComp.css';
+
 const Itinerary = ({ events, selectedEventID }) => {
   // console.log('selectedEventID', selectedEventID);
   const [eventDetails, setEventDetails] = useState({
@@ -37,14 +39,14 @@ const Itinerary = ({ events, selectedEventID }) => {
   }, [selectedEventID]);
 
   return (
-    <section className="itin-container">
+    <section className="itin-container event-container">
       <div className="event-title">
         <h1>
           Itinerary for {eventDetails.name} on {eventDetails.date}
         </h1>
       </div>
 
-      <div className="itin-activities">
+      <div className="itin-act-container act-container">
         {eventDetails.activities &&
           eventDetails.activities.map((activity, index) => (
             <div className="itin-activity" key={index}>

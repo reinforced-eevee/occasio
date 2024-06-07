@@ -20,6 +20,7 @@ export default function CurrEventDisplay({selectedEventID}) {
             </section>
             <section className='event-display'>
                 <Routes> 
+                    <Route index element={<Itinerary/>} />
                     <Route path='home/itinerary' element={<Itinerary selectedEventID={selectedEventID} />} />
                     <Route path='home/venues' element={<Venues selectedEventID={selectedEventID} />} />
                     <Route path='home/shoplist' element={<ShoppingList selectedEventID={selectedEventID} />} />

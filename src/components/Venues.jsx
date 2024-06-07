@@ -31,7 +31,7 @@ export default function Venues({ selectedEventID }) {
                 Test
                 <h1>Venues for {eventName} on {eventDate}</h1>
             </div>
-            <div className='venue-list'>
+            <div className='venue-act-container act-container'>
                 {venueDetails && venueDetails.map((venue) => (
                     <div className='venue-item' key={venue.name}>
                         <h3>{venue.name}</h3>

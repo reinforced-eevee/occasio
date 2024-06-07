@@ -5,6 +5,8 @@ export default function Playlist({ selectedEventID }) {
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
 
+    const colorClasses = ['lightGreen', 'grassGreen', 'darkTeal', 'teal', 'lightBlue', 'midBlue', 'darkBlue','darkPurple', 'purple'];
+
     const getEvent = () => {
         fetch(`http://localhost:3000/events/${selectedEventID}`)
             .then((res) => res.json())
@@ -27,15 +29,15 @@ export default function Playlist({ selectedEventID }) {
                 {/* <h1>{playlistDetails.playlist}</h1> */}
                 <h2>Playlist for {eventName} on {eventDate}</h2>
             </div>
-            <div className='playlist'>
+            <div className='playlist-act-container act-container'>
                 {playlistDetails && playlistDetails.map((song, index) => (
-                    <div className='playlist-item' key={song._id}>
+                    <div className={`playlist-item ${colorClasses[index % colorClasses.length]}`} key={song._id}>
                         <ul>
-                            <li>{index}.</li>
+                            <li className='playlist-index'>{index + 1}.</li>
                                 <ul>
-                                    <li>Title: {song.song_title}</li>
-                                    <li>Artist: {song.artist}</li>
-                                    <li>Genre: {song.genre}</li>
+                                    <li className='playlist-title'>Title: {song.song_title}</li>
+                                    <li className='playlist-artist'>Artist: {song.artist}</li>
+                                    <li className='playlist-genre'>Genre: {song.genre}</li>
                                 </ul>
                         </ul>
                     </div>
