@@ -32,7 +32,7 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((bool) => {
         if (bool) {
-          navigate('/home');
+          navigate('/home/home/itinerary');
         }
       })
       .catch((err) => console.log('App: create user error ', err));
@@ -87,7 +87,9 @@ const SignUp = () => {
           </div>
         )}
         <p className='signup-footer'>
-          Already a user? <a href='/login'>Log in here</a>
+          Already a user? <a href='/login'>Log in</a>
+          <br></br>
+          <a href="/">Back to home</a>
         </p>
       </div>
     </div>

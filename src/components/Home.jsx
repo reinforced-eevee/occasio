@@ -18,7 +18,8 @@ function Home() {
       .then((data) => {
         setUser(data);
         // console.log('user is ' + data._id);
-        setEvents(data.events);
+        const reversedEvents = [...data.events].reverse();
+        setEvents(reversedEvents);
       })
       .catch((err) => console.log('Error getting user: ', err));
   };
