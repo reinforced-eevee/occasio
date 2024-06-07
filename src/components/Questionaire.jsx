@@ -19,9 +19,9 @@
 //   });
 //   const [isSubmitting, setIsSubmitting] = useState(false);
 
-//   const formatDate = (datetime) => {
-//     return datetime.split('T')[0];
-//   };
+const formatDate = (datetime) => {
+  return datetime.split('T')[0];
+};
 
 //   const handleChange = (e) => {
 //     setFormData({
@@ -34,7 +34,7 @@
 //     e.preventDefault();
 //     setIsSubmitting(true); // Set isSubmitting to true when form submission starts
 
-//     const formattedDate = formatDate(formData.date);
+const formattedDate = formatDate(formData.date);
 
 //     const updatedFormData = {
 //       ...formData,
