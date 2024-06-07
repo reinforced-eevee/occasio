@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Router} from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import HomeNavbar from './HomeNavbar';
 import Questionnaire from './Questionnaire';
 import EventsSidebar from './EventsSidebar';
@@ -26,11 +26,10 @@ function Home() {
 
   // console.log('EventID Home Component, line 26: ', selectedEventID);
 
-
   return (
-    <div>
+    <div className="home">
       <HomeNavbar />
-      <div className='home-container'>
+      <div className="home-container">
         <EventsSidebar
           events={events}
           setSelectedEventID={setSelectedEventID}
