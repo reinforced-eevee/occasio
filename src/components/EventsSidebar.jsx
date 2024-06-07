@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../styling/EventsSidebar.css';
 
-function EventsSidebar({ setSelectedEventID }) {
-  const [events, setEvents] = useState([]);
+function EventsSidebar({ events, setSelectedEventID }) {
+  const [userEvents, setUserEvents] = useState([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -16,7 +16,7 @@ function EventsSidebar({ setSelectedEventID }) {
         });
         if (response.ok) {
           const data = await response.json();
-          setEvents(data);
+          setUserEvents(data);
         } else {
           throw new Error('Failed to fetch events');
         }
@@ -34,7 +34,7 @@ function EventsSidebar({ setSelectedEventID }) {
       <div className='events-list'>
         {events.map((event) => (
           <div
-            key={event.id}
+            key={event._id}
             className='event-icon-box'
             onClick={() => setSelectedEventID(event._id)}
           >

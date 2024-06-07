@@ -6,6 +6,7 @@ const path = require('path');
 const userController = require('./controllers/userController.js');
 const cookieController = require('./controllers/cookieController.js');
 const sessionController = require('./controllers/sessionController.js');
+const openaiRoutes = require('./routes/openaiRoutes.js');
 
 const eventRouter = require('./routes/eventRouter.js');
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '../build')));
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -28,8 +30,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-const openaiRoutes = require('./routes/openaiRoutes.js');
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
@@ -82,8 +82,6 @@ app.get('/action/logout', sessionController.endSession, (req, res) => {
   res.clearCookie('ssid');
   res.redirect('/');
 });
-
-app.use('/events', eventRouter);
 
 // Global Error Handler
 app.use((err, req, res, next) => {

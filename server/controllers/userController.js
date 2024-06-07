@@ -45,7 +45,6 @@ userController.verifyUser = async (req, res, next) => {
   }
 };
 
-
 userController.getUser = async (req, res, next) => {
   const userID = req.cookies.ssid;
   try {
@@ -56,7 +55,7 @@ userController.getUser = async (req, res, next) => {
     return next({
       log: 'Error in userController.getUser',
       status: 400,
-      message: { err: 'Error getting user' },
+      message: { err: 'Error getting user' + error.message },
     });
   }
 };
