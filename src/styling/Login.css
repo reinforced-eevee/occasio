@@ -42,6 +42,7 @@
 }
 .login-center a {
   color: var(--black);
+  font-weight: bold
 }
 .login-footer a {
   color: var(--black);
