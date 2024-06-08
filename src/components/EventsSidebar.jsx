@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../styling/EventsSidebar.css';
 
 function EventsSidebar({ events, selectedEventID, setSelectedEventID }) {
-  const [userEvents, setUserEvents] = useState([]);
-
   useEffect(() => {
     if (events.length > 0) {
       setSelectedEventID(events[0]._id);
