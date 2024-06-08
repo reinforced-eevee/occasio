@@ -34,6 +34,7 @@ function Home() {
         <EventsSidebar
           events={events}
           setSelectedEventID={setSelectedEventID}
+          selectedEventID={selectedEventID}
           userID={user._id}
         />
 
