@@ -1,35 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../styling/EventsSidebar.css';
 
-function EventsSidebar({ events, setSelectedEventID }) {
+function EventsSidebar({ events, selectedEventID, setSelectedEventID }) {
   const [userEvents, setUserEvents] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchEvents = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:3000/events', {
-  //         method: 'GET',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         credentials: 'include', // Ensures cookies are sent with the request
-  //       });
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         setUserEvents(data);
-  //         if (data.length > 0) {
-  //           setSelectedEventID(data[data.length - 1]._id); // Automatically select the last event
-  //         }
-  //       } else {
-  //         throw new Error('Failed to fetch events');
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching events:', error);
-  //     }
-  //   };
-
-  //   fetchEvents();
-  // }, [setSelectedEventID]);
   useEffect(() => {
     if (events.length > 0) {
       setSelectedEventID(events[0]._id);
@@ -44,7 +18,7 @@ function EventsSidebar({ events, setSelectedEventID }) {
           <div
             key={event._id}
             className={
-              setSelectedEventID === event._id
+              selectedEventID === event._id
                 ? 'event-icon-box selected'
                 : 'event-icon-box'
             }
