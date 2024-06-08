@@ -10,7 +10,7 @@ export default function Playlist({ selectedEventID }) {
     return date.toLocaleDateString('en-CA').replace(/-/g, '/');
   };
 
-  const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'pink', 'purpPink'];
+  const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'purpPink'];
 
   const getEvent = () => {
     fetch(`http://localhost:3000/events/${selectedEventID}`)

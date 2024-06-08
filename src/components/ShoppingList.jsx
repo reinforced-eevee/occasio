@@ -5,7 +5,7 @@ export default function ShoppingList({ selectedEventID }) {
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
 
-    const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'pink', 'purpPink'];
+    const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'purpPink'];
 
     const formatDate = (isoDateString) => {
         const date = new Date(isoDateString);

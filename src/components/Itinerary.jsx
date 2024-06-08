@@ -35,7 +35,7 @@ const Itinerary = ({ events, selectedEventID }) => {
   }, [selectedEventID]);
 
 
-  const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'pink', 'purpPink'];
+  const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'purpPink'];
 
   //temp styling to make it visible on dark background
   // const itineraryStyles = {
@@ -55,9 +55,11 @@ const Itinerary = ({ events, selectedEventID }) => {
   return (
     <section className='itin-container event-container'>
       <div className='event-title'>
-        <h1>
+        {!eventDetails.name && <h2>
+          Plan your first event!</h2>}
+        {eventDetails.name && <h1>
           Itinerary: {eventDetails.name}, {eventDetails.date}
-        </h1>
+        </h1>}
       </div>
 
       <div className='itin-act-container act-container'>
