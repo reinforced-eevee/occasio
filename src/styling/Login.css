@@ -17,6 +17,7 @@
   padding: 5rem 4rem;
   border-radius: var(--radius);
   border: 2px solid var(--black);
+  z-index: 100;
 }
 .login-center h2 {
   margin-bottom: 3rem;
