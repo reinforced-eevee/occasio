@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styling/Login.css';
+import '../styling/SplashMain.css'
+import NineSVG from '../assets/9.svg'
+import SevenSVG from '../assets/7.svg'
+import EightSVG from '../assets/8.svg'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -42,6 +46,9 @@ const Login = () => {
 
   return (
     <div className='page-container'>
+      <img src={NineSVG} alt='9' className='overlay-svg nine-svg' />
+      <img src={SevenSVG} alt='7' className='overlay-svg seven-svg' />
+      <img src={EightSVG} alt='8' className='overlay-svg eight-svg' />
       <div className='login-center'>
         <h2>Log in</h2>
         <form onSubmit={handleSubmit} className='login-form'>
