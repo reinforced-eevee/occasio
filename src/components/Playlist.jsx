@@ -10,6 +10,8 @@ export default function Playlist({ selectedEventID }) {
     return date.toLocaleDateString('en-CA').replace(/-/g, '/');
   };
 
+  const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'pink', 'purpPink'];
+
   const getEvent = () => {
     fetch(`http://localhost:3000/events/${selectedEventID}`)
       .then((res) => res.json())
@@ -27,29 +29,26 @@ export default function Playlist({ selectedEventID }) {
     getEvent();
   }, [selectedEventID]);
 
-  return (
-    <section className='playlist-container event-container'>
-      <div className='event-title'>
-        {/* <h1>{playlistDetails.playlist}</h1> */}
-        <h2>
-          Playlist for {eventName} on {eventDate}
-        </h2>
-      </div>
-      <div className='playlist'>
-        {playlistDetails &&
-          playlistDetails.map((song, index) => (
-            <div className='playlist-item' key={song._id}>
-              <ul>
-                <li>{index}.</li>
-                <ul>
-                  <li>Title: {song.song_title}</li>
-                  <li>Artist: {song.artist}</li>
-                  <li>Genre: {song.genre}</li>
-                </ul>
-              </ul>
+    return (
+        <section className='playlist-container event-container'>
+            <div className='event-title'>
+                {/* <h1>{playlistDetails.playlist}</h1> */}
+                <h2>Playlist: {eventName}, {eventDate}</h2>
             </div>
-          ))}
-      </div>
-    </section>
-  );
+            <div className='playlist-act-container act-container'>
+                {playlistDetails && playlistDetails.map((song, index) => (
+                    <div className={`playlist-item ${colorClasses[index % colorClasses.length]}`} key={song._id}>
+                        <ul>
+                            <li className='playlist-index'>{index + 1}.</li>
+                                <ul>
+                                    <li className='playlist-title'>Title: {song.song_title}</li>
+                                    <li className='playlist-artist'>Artist: {song.artist}</li>
+                                    <li className='playlist-genre'>Genre: {song.genre}</li>
+                                </ul>
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        </section>
+    )
 }

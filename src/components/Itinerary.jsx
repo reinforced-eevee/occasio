@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import '../styling/EventComp.css';
+
 const Itinerary = ({ events, selectedEventID }) => {
   // console.log('selectedEventID', selectedEventID);
   const [eventDetails, setEventDetails] = useState({
@@ -32,40 +34,43 @@ const Itinerary = ({ events, selectedEventID }) => {
     getEvent();
   }, [selectedEventID]);
 
-  //temp styling to make it visible on dark background
-  const itineraryStyles = {
-    backgroundColor: '#333', // Dark background
-    color: '#fff', // White text color
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-  };
 
-  const titleStyle = {
-    borderBottom: '1px solid #555',
-    paddingBottom: '10px',
-    marginBottom: '20px',
-  };
+  const colorClasses = ['magenta', 'orange', 'lightOrange', 'yellow', 'pink', 'purpPink'];
+
+  //temp styling to make it visible on dark background
+  // const itineraryStyles = {
+  //   backgroundColor: '#333', // Dark background
+  //   color: '#fff', // White text color
+  //   padding: '20px',
+  //   borderRadius: '8px',
+  //   boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+  // };
+
+  // const titleStyle = {
+  //   borderBottom: '1px solid #555',
+  //   paddingBottom: '10px',
+  //   marginBottom: '20px',
+  // };
 
   return (
-    <section className='itin-container' style={itineraryStyles}>
-      <div className='event-title' style={titleStyle}>
+    <section className='itin-container event-container'>
+      <div className='event-title'>
         <h1>
-          Itinerary for {eventDetails.name} on {eventDetails.date}
+          Itinerary: {eventDetails.name}, {eventDetails.date}
         </h1>
       </div>
 
-      <div className='itin-activities'>
+      <div className='itin-act-container act-container'>
         {eventDetails.activities &&
           eventDetails.activities.map((activity, index) => (
-            <div className='itin-activity' key={index}>
+            <div className={`itin-activity ${colorClasses[index % colorClasses.length]}`} key={index}>
               <ul>
                 <li>
-                  <h3>
+                  <h3 className='itin-activity-title'>
                     {activity.activity}: {activity.time_range}
                   </h3>
                   <ul>
-                    <li>{activity.activity_details}</li>
+                    <li className='itin-activity-details'>{activity.activity_details}</li>
                   </ul>
                 </li>
               </ul>

@@ -4,8 +4,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
   min-height: 100vh;
-  background-color: #f0f0f0;
+  min-width: 100vw;
+  background-color: #0A0220;
 }
 
 .home-container > * {
