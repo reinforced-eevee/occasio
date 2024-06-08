@@ -35,8 +35,14 @@
   margin: 10px;
   border: 1px solid #ddd;
   font-size: 15px;
+  font-weight: 400;
   padding: 10px;
   margin: 5px;
+  cursor: pointer;
+  background: #cd4e07;
+  color: #fbfbfb;
+  text-shadow: 0.08rem 0.08rem 0.08rem #000000;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
@@ -44,12 +50,17 @@
 .event-icon-box:hover,
 .event-icon-box:focus {
   background-color: #e6e6e6; /* Slightly darker on hover/focus for better interaction feedback */
+  color: #0a0220;
+  text-shadow: none;
 }
 
 .event-icon-box.selected {
   background-color: #f0f0f0; /* Light grey background for the selected event */
-  border-left: 5px solid blue; /* Blue left border for the selected event */
+  border-left: 5px solid #CD4E07; /* Blue left border for the selected event */
   outline: none; /* Remove default focus outline */
+  color: #0a0220;
+  font-weight: 400;
+  text-shadow: none;
 }
 
 .event-details {

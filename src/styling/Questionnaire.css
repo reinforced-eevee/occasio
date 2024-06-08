@@ -19,7 +19,7 @@
   width: 80%;
   max-width: 600px;
   position: relative; /* Needed for absolute positioning of the loader */
-  overflow-y: scroll;
+  overflow-y: auto;
   /* max-height: 80vh; */
 }
 
