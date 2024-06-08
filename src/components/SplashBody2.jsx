@@ -12,7 +12,7 @@ function SplashBody2 () {
       </div>
       <div className="testimonial">
         <div className="testimonial-header">Testimonial</div>
-        <div className="testimonial-text">I used to hate planning events until I found Occasio and now I find the process enjoyable and even fun, yay!"</div>
+        <div className="testimonial-text">I used to hate planning events until I found Occasio and now I find the process even more enjoyable than getting a refund, yay!"</div>
         <div className="testimonial-giver">Daniel Sin SWE</div>
       </div>
     </div>
