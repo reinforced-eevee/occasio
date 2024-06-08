@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styling/Login.css';
 import '../styling/SplashMain.css'
 import NineSVG from '../assets/9.svg'
 import SevenSVG from '../assets/7.svg'
 import EightSVG from '../assets/8.svg'
 
-const Login = () => {
+const SignUp = () => {
   const navigate = useNavigate();
-  const [correctCredential, setCorrectCredential] = useState(true);
   const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
+  const [duplicate, setDuplicate] = useState(false);
 
   const handleDataChange = (e) => {
     setUserData({
@@ -27,22 +26,32 @@ const Login = () => {
       email: userData.email,
       password: userData.password,
     };
-    fetch('/action/login', {
+    fetch('/action/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
-    .then((res) => res.json())
-    .then((bool) => {
-      setCorrectCredential(bool);
-      if (bool) {
-        navigate('/home/home/itinerary');
-      }
-    })
-    .catch((err) => console.log('App: log in error ', err));
+      .then((res) => res.json())
+      .then((bool) => {
+        if (bool) {
+          navigate('/home/home/itinerary');
+        }
+      })
+      .catch((err) => console.log('App: create user error ', err));
   };
+
+  useEffect(() => {
+    if (userData.email) {
+      fetch(`/action/checkDuplicate/${userData.email}`)
+        .then((res) => res.json())
+        .then((bool) => setDuplicate(bool))
+        .catch((err) => console.log('App: check email duplicate error: ', err));
+    } else {
+      setDuplicate(false);
+    }
+  }, [userData.email]);
 
   return (
     <div className='page-container'>
@@ -50,7 +59,7 @@ const Login = () => {
       <img src={SevenSVG} alt='7' className='overlay-svg seven-svg' />
       <img src={EightSVG} alt='8' className='overlay-svg eight-svg' />
       <div className='login-center'>
-        <h2>Log in</h2>
+        <h2>Sign Up Page</h2>
         <form onSubmit={handleSubmit} className='login-form'>
           <p>Email</p>
           <input
@@ -69,21 +78,23 @@ const Login = () => {
             onChange={handleDataChange}
             required
           />
-
           <div>
             <button
               type='submit'
               className='btn login-btn'
               disabled={!userData.email || !userData.password}
             >
-              Sign in
+              Sign up
             </button>
           </div>
         </form>
-        {!correctCredential && <div className="error">Incorrect username or password.</div>}
-
+        {duplicate && (
+          <div style={{ color: 'red', fontSize: '0.8em' }}>
+            User already exists. Please log in instead.
+          </div>
+        )}
         <p className='signup-footer'>
-          Not a user yet? <a href='/signup'>Sign up</a>
+          Already a user? <a href='/login'>Log in</a>
           <br></br>
           <a href="/">Back to home</a>
         </p>
@@ -92,4 +103,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

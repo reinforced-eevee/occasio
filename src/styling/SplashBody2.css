@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --bg-color: #0A0220; 
+  --secondary-color: #F1CFD3;
+  --primary-color: #CD4E07;
+  --font-sizeH2: 64px;
+  --line-height1: 70px;
+  --font-sizebody-l: 32px;
+  --font-sizeH6: 20px;
+  --font-sizeH5: 28px;
+  --font-sizebody-xl: 44px;
+  --font-sizebody-s: 24px;
+}
+
+.testimonial-container {
+  max-width: 1,440px;
+  width: 100%;
+  max-height: 665px;
+  height: auto;
+  padding: 120px 0px 0px 0px;
+  gap: 64px;
+  border-radius: 2px 0px 0px 0px;
+  opacity: 0px;
+  display: flex;
+  margin-left: 550px;
+  margin-bottom: 120px;
+  align-items: center;
+}
+
+.image {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  gap: 10px;
+  isolation: isolate;
+  width: 292px;
+  height: 425px;
+  border: 1px solid #F1CFD3;
+  border-radius: 223px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  opacity: 0px;
+  position: relative; 
+  background: url('../assets/Vector.svg')
+}
+
+.testimonial-photo {
+  width: 228px;
+  height: 361px;
+  gap: 0px;
+  border-radius: 200px 0px 0px 0px;
+  opacity: 0px;
+  width: 228px;
+  height: 361px;
+  border-radius: 200px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 0px;
+  gap: 24px;
+  width: 677px;
+  height: 425px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.testimonial-header {
+  width: 677px;
+  height: 34px;
+  font-size: var(--font-sizeH5);
+  font-weight: 400;
+  line-height: 33.72px;
+  letter-spacing: 0.24em;
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  /* identical to box height, or 34px */
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  mix-blend-mode: normal;
+  opacity: 0.7;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.testimonial-text {
+  width: 677px;
+  height: 240px;
+  /* minimal/default/body-XL */
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px;
+  font-size: var(--font-sizebody-xl);
+  color: #FFFFFF;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.testimonial-giver {
+  /* title */
+  width: 677px;
+  height: 33px;
+  /* minimal/default/body-S */
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+  /* identical to box height */
+  color: #FFFFFF;
+  mix-blend-mode: normal;
+  opacity: 0.7;
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  font-size: var(--font-sizebody-s);
+  text-align: left;
+}
